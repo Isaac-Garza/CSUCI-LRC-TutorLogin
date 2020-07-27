@@ -5,7 +5,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome! "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -18,4 +18,16 @@
     <string name="view_button">"View"</string>
     <string name="delete_button">"Delete</string>
     <string name="create_button">"Create"</string>
+    <string name="subject_title">"Subject: "</string>
+    <string name="current_schedule">"<u>Current Schedule:</u></string>
+    <string name="monday">"Monday:"</string>
+    <string name="tuesday">"Tuesday:"</string>
+    <string name="wednesday">"Wednesday:"</string>
+    <string name="thursday">"Thursday:"</string>
+    <string name="friday">"Friday:"</string>
+    <string name="saturday">"Saturday:"</string>
+    <string name="sunday">"Sunday:"</string>
+    <string name="time_format">"00:00AM-00:00PM, …"</string>
+    <string name="update_button">"Update"</string>
+    <string name="cancel_update">"Cancel"</string>
 </resources>
