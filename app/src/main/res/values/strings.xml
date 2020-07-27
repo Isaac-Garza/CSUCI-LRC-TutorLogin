@@ -14,4 +14,8 @@
     <string name="tutor_list">"Tutors Logged-In"</string>
     <string name="lrc_schedule">"LRC Schedule"</string>
     <string name="stem_schedule">"STEM Schedule"</string>
+    <string name="admin_page">"Admin Page"</string>
+    <string name="view_button">"View"</string>
+    <string name="delete_button">"Delete</string>
+    <string name="create_button">"Create"</string>
 </resources>
