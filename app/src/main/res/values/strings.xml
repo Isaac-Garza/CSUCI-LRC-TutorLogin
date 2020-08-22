@@ -33,16 +33,18 @@
     <string name="input_name">FirstName LastName</string>
     <string name="input_role">STEM Tutor, LRC Tutor, Lead, etc.</string>
     <string name="input_subjects">MATH, COMP, etc.</string>
-    <string name="Monday">M</string>
-    <string name="Tuesday">T</string>
-    <string name="Wednesday">W</string>
-    <string name="Thursday">T</string>
-    <string name="Friday">F</string>
-    <string name="Saturday">S</string>
-    <string name="Sunday">S</string>
+    <string name="Monday">MON:</string>
+    <string name="Tuesday">TUE:</string>
+    <string name="Wednesday">WED:</string>
+    <string name="Thursday">THUR:</string>
+    <string name="Friday">FRI:</string>
+    <string name="Saturday">SAT:</string>
+    <string name="Sunday">SUN:</string>
     <string name="time_prompt">Start</string>
     <string name="time_prompt2">End</string>
+    <string name="to_text">to</string>
     <string-array name="time_array">
+        <item>Select Hour</item>
         <item>12:00 AM</item>
         <item>12:30 AM</item>
         <item>1:00 AM</item>

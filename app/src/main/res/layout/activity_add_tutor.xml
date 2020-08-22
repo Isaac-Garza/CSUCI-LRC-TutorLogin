@@ -86,51 +86,15 @@
     </LinearLayout>
 
     <!--    Days for New Employee    -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <TextView
+    android:layout_width="70dp"
+    android:layout_height="0dp"
+    android:layout_gravity="start"
+    android:layout_weight="1"
+    android:gravity="center_vertical"
+    android:text="@string/employee_days"
+    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/employee_days"
-            android:textSize="20sp" />
-
-        <CheckBox
-            android:text="@string/Sunday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Monday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Tuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Wednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Thursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Friday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <CheckBox
-            android:text="@string/Saturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-    </LinearLayout>
 <!--    <View-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="1dp"-->
@@ -142,39 +106,209 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/employee_hours"
-            android:textSize="20sp" />
+        <CheckBox
+            android:text="@string/Sunday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
 
         <Spinner
-            android:id="@+id/spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/time_array"
-            android:hint="Hours"
             android:prompt="@string/time_prompt" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="to" />
+            android:text="@string/to_text" />
 
         <Spinner
-            android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hours"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Monday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:entries="@array/time_array"
             android:prompt="@string/time_prompt" />
 
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Tuesday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Wednesday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Thursday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Friday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="@string/Saturday"
+            android:layout_height="wrap_content"
+            android:layout_width="75dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/time_array"
+            android:prompt="@string/time_prompt" />
+    </LinearLayout>
+
 
     <Button
         android:layout_width="wrap_content"
