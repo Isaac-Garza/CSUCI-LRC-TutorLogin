@@ -307,6 +307,9 @@
             android:layout_height="wrap_content"
             android:entries="@array/time_array"
             android:prompt="@string/time_prompt" />
+
+
+
     </LinearLayout>
 
 
