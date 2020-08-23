@@ -19,8 +19,9 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
     }
 
     @Override
-    public void onClick(View v) {
-        Intent i =
-
+    public void onClick(View v)
+    {
+        Intent i = new Intent(this,AddTutor.class);
+        startActivity(i);
     }
 }
