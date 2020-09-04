@@ -10,26 +10,25 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <!--  Tutor Page Strings  -->
     <string name="tutor_name">"Tutor's Name"</string>
     <string name="student_list">"Student Queue"</string>
     <string name="tutor_list">"Tutors Logged-In"</string>
     <string name="lrc_schedule">"LRC Schedule"</string>
     <string name="stem_schedule">"STEM Schedule"</string>
 
+    <!--  Admin Page Strings  -->
     <string name="admin_page">Admin Page</string>
     <string name="list">Current Tutor List:</string>
     <string name="add">Add Employee</string>
-    <string name="delete">Remove Employee</string>
-    <string name="edit">Edit Employee</string>
 
+    <!--  Add Tutor Strings  -->
     <string name="add_page_title">Adding Employee</string>
     <string name="employee_name">Name: </string>
     <string name="employee_role">Role:  </string>
     <string name="employee_subjects">Subject(s): </string>
     <string name="employee_hours">Hours: </string>
     <string name="employee_days">Days: </string>
-
-
     <string name="input_name">FirstName LastName</string>
     <string name="input_role">STEM Tutor, LRC Tutor, Lead, etc.</string>
     <string name="input_subjects">MATH, COMP, etc.</string>
@@ -97,6 +96,14 @@
     </string-array>
 
     <string name="submit_button">Add Tutor</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!--  Edit Tutor Strings  -->
+    <string name="selected_tutor">Selected Tutor</string>
+    <string name="delete">Remove Tutor</string>
+    <string name="edit">Edit Tutor</string>
+
+
 
 
 </resources>

@@ -10,57 +10,58 @@
     android:weightSum="6"
     tools:context=".AddTutor">
 
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/add_page_title"
+    <TextView
+        android:id="@+id/Selected_Tutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_tutor"
 
-          android:layout_gravity="center"
-          android:textSize="30sp"
-          android:textColor="@android:color/black" />
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textColor="@android:color/black" />
 
     <!--    Name of New Employee    -->
     <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:gravity="center_vertical"
-      android:layout_weight="1"
-      android:text="@string/employee_name"
-      android:textSize="20sp"
-      android:layout_gravity="start" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/employee_name"
+            android:textSize="20sp"
+            android:layout_gravity="start" />
 
-     <EditText
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_weight="1"
-         android:hint="@string/input_name" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/input_name" />
     </LinearLayout>
 
     <!--    Role of New Employee    -->
     <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="match_parent"
-           android:layout_gravity="start"
-           android:layout_weight="1"
-           android:gravity="center_vertical"
-           android:text="@string/employee_role"
-           android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/employee_role"
+            android:textSize="20sp" />
 
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:hint="@string/input_role" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/input_role" />
     </LinearLayout>
 
     <!--    Subject(s) of New Employee    -->
@@ -87,18 +88,18 @@
 
     <!--    Days for New Employee    -->
     <TextView
-    android:layout_width="70dp"
-    android:layout_height="0dp"
-    android:layout_gravity="start"
-    android:layout_weight="1"
-    android:gravity="center_vertical"
-    android:text="@string/employee_days"
-    android:textSize="20sp" />
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="@string/employee_days"
+        android:textSize="20sp" />
 
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:background="@android:color/darker_gray"/>-->
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:background="@android:color/darker_gray"/>-->
 
     <!--    Hours of New Employee    -->
     <LinearLayout
@@ -307,9 +308,6 @@
             android:layout_height="wrap_content"
             android:entries="@array/time_array"
             android:prompt="@string/time_prompt" />
-
-
-
     </LinearLayout>
 
 
@@ -317,13 +315,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/submit_button"/>
+        android:text="@string/edit" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/cancel_button"/>
+        android:text="@string/delete"/>
 
 
 

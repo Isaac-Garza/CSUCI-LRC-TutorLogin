@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.lang.reflect.Array;
@@ -15,7 +18,7 @@ import java.util.List;
 
 
 
-public class AdminHub extends AppCompatActivity implements View.OnClickListener{
+public class AdminHub extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener{
 
     ListView listView;
     List list = new ArrayList();
@@ -30,7 +33,6 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_admin_hub);
 
         addButton=findViewById(R.id.add_button);
-
         addButton.setOnClickListener(this);
 
         listView =(ListView) findViewById(R.id.employee_list);
@@ -46,14 +48,31 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener{
         list.add("Employee9");
         list.add("Employee10");
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(AdminHub.this, EditTutor.class);
+                intent.putExtra("TutorName", list.get(position).toString());
+                startActivity(intent);
+            }
+        });
+
+
+
         adapter = new ArrayAdapter(AdminHub.this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
 
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
+
         Intent i = new Intent(this, AddTutor.class);
         startActivity(i);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
     }
 }
