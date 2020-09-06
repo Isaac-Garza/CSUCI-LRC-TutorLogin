@@ -5,43 +5,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="3"
     android:orientation="vertical"
-    tools:context=".AdminHub">
+    tools:context=".AdminHub"
+    android:padding="10dp">
 
     <TextView
-        android:text="@string/admin_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/black"
-        android:textSize="35sp">
-    </TextView>
+        android:text="@string/admin_page"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list"
+        android:layout_gravity="left"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/black" />
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="500dp">
-    </ListView>
+        android:id="@+id/employee_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_margin="10dp"
+        android:background="@drawable/listview_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/view_button">
-    </Button>
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="@string/add"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/delete_button">
-    </Button>
+<!--    <Button-->
+<!--        android:id="@+id/delete_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_weight="0"-->
+<!--        android:text="@string/delete"/>-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/create_button">
-    </Button>
-
+<!--    <Button-->
+<!--        android:id="@+id/edit_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_weight="0"-->
+<!--        android:text="@string/edit" />-->
 
 </LinearLayout>
