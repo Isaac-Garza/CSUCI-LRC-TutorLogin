@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TutorActivity"
+    android:padding="15dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile_icon">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/detail_tutor_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/tutor_name"
+        android:textColor="@android:color/black"
+        android:textSize="35sp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subject_title"
+            android:textColor="@android:color/black"
+            android:textSize="25sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MATH/COMP-SCI"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="25sp">
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/current_schedule"
+        android:textColor="@android:color/black"
+        android:textSize="30sp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/monday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_format"
+            android:textColor="@android:color/darker_gray">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuesday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/tuesday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wednesday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/wednesday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thursday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/thursday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/friday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/friday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/saturday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/saturday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sunday"
+            android:textSize="20sp"
+            android:textColor="@android:color/black">
+        </TextView>
+
+        <EditText
+            android:id="@+id/sunday_time"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/update_button">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_update"
+        android:layout_gravity="center_horizontal">
+    </Button>
+
+
+
+
+
+</LinearLayout>

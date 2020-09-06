@@ -5,7 +5,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome! "</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -16,94 +16,20 @@
     <string name="tutor_list">"Tutors Logged-In"</string>
     <string name="lrc_schedule">"LRC Schedule"</string>
     <string name="stem_schedule">"STEM Schedule"</string>
-
-    <!--  Admin Page Strings  -->
-    <string name="admin_page">Admin Page</string>
-    <string name="list">Current Tutor List:</string>
-    <string name="add">Add Employee</string>
-
-    <!--  Add Tutor Strings  -->
-    <string name="add_page_title">Adding Employee</string>
-    <string name="employee_name">Name: </string>
-    <string name="employee_role">Role:  </string>
-    <string name="employee_subjects">Subject(s): </string>
-    <string name="employee_hours">Hours: </string>
-    <string name="employee_days">Days: </string>
-    <string name="input_name">FirstName LastName</string>
-    <string name="input_role">STEM Tutor, LRC Tutor, Lead, etc.</string>
-    <string name="input_subjects">MATH, COMP, etc.</string>
-    <string name="Monday">MON:</string>
-    <string name="Tuesday">TUE:</string>
-    <string name="Wednesday">WED:</string>
-    <string name="Thursday">THUR:</string>
-    <string name="Friday">FRI:</string>
-    <string name="Saturday">SAT:</string>
-    <string name="Sunday">SUN:</string>
-    <string name="time_prompt">Start</string>
-    <string name="time_prompt2">End</string>
-    <string name="to_text">to</string>
-    <string-array name="time_array">
-        <item>Select Hour</item>
-        <item>12:00 AM</item>
-        <item>12:30 AM</item>
-        <item>1:00 AM</item>
-        <item>1:30 AM</item>
-        <item>2:00 AM</item>
-        <item>2:30 AM</item>
-        <item>3:00 AM</item>
-        <item>3:30 AM</item>
-        <item>4:00 AM</item>
-        <item>4:30 AM</item>
-        <item>5:00 AM</item>
-        <item>5:30 AM</item>
-        <item>6:00 AM</item>
-        <item>6:30 AM</item>
-        <item>7:00 AM</item>
-        <item>7:30 AM</item>
-        <item>8:00 AM</item>
-        <item>8:30 AM</item>
-        <item>9:00 AM</item>
-        <item>9:30 AM</item>
-        <item>10:00 AM</item>
-        <item>10:30 AM</item>
-        <item>11:00 AM</item>
-        <item>11:30 AM</item>
-
-        <item>12:00 PM</item>
-        <item>12:30 PM</item>
-        <item>1:00 PM</item>
-        <item>1:30 PM</item>
-        <item>2:00 PM</item>
-        <item>2:30 PM</item>
-        <item>3:00 PM</item>
-        <item>3:30 PM</item>
-        <item>4:00 PM</item>
-        <item>4:30 PM</item>
-        <item>5:00 PM</item>
-        <item>5:30 PM</item>
-        <item>6:00 PM</item>
-        <item>6:30 PM</item>
-        <item>7:00 PM</item>
-        <item>7:30 PM</item>
-        <item>8:00 PM</item>
-        <item>8:30 PM</item>
-        <item>9:00 PM</item>
-        <item>9:30 PM</item>
-        <item>10:00 PM</item>
-        <item>10:30 PM</item>
-        <item>11:00 PM</item>
-        <item>11:30 PM</item>
-    </string-array>
-
-    <string name="submit_button">Add Tutor</string>
-    <string name="cancel_button">Cancel</string>
-
-    <!--  Edit Tutor Strings  -->
-    <string name="selected_tutor">Selected Tutor</string>
-    <string name="delete">Remove Tutor</string>
-    <string name="edit">Edit Tutor</string>
-
-
-
-
+    <string name="admin_page">"Admin Page"</string>
+    <string name="view_button">"View"</string>
+    <string name="delete_button">"Delete</string>
+    <string name="create_button">"Create"</string>
+    <string name="subject_title">"Subject: "</string>
+    <string name="current_schedule">"<u>Current Schedule:</u></string>
+    <string name="monday">"Monday:"</string>
+    <string name="tuesday">"Tuesday:"</string>
+    <string name="wednesday">"Wednesday:"</string>
+    <string name="thursday">"Thursday:"</string>
+    <string name="friday">"Friday:"</string>
+    <string name="saturday">"Saturday:"</string>
+    <string name="sunday">"Sunday:"</string>
+    <string name="time_format">"00:00AM-00:00PM, …"</string>
+    <string name="update_button">"Update"</string>
+    <string name="cancel_update">"Cancel"</string>
 </resources>

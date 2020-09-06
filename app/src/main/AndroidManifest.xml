@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditTutor"></activity>
-        <activity android:name=".AddTutor" />
+        <activity android:name=".TutorActivity"></activity>
         <activity android:name=".AdminHub" />
         <activity android:name=".TutorHub" />
         <activity
