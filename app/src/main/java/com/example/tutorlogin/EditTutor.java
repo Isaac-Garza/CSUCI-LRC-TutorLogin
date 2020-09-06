@@ -16,7 +16,7 @@ public class EditTutor extends AppCompatActivity {
 
         Intent intent = getIntent();
         String selectedTutorTitle = intent.getStringExtra("TutorName");
-        editTutorTitle.findViewById(R.id.Selected_Tutor);
+        editTutorTitle = findViewById(R.id.selected_tutor);
         editTutorTitle.setText(selectedTutorTitle);
 
 

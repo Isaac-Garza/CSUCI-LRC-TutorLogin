@@ -42,11 +42,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         list.add("Employee3");
         list.add("Employee4");
         list.add("Employee5");
-        list.add("Employee6");
-        list.add("Employee7");
-        list.add("Employee8");
-        list.add("Employee9");
-        list.add("Employee10");
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
