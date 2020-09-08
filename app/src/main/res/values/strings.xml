@@ -22,6 +22,10 @@
     <string name="list">Current Tutor List:</string>
     <string name="add">Add Employee</string>
 
+    <!--  Tutor List Strings  -->
+    <string name="tutor_temp">Tutor Temp</string>
+    <string name="tutor_subject_temp">Subject Temp</string>
+
     <!--  Add Tutor Strings  -->
     <string name="add_page_title">Adding Employee</string>
     <string name="employee_name">Name: </string>
