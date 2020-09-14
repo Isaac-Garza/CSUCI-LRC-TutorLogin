@@ -32,9 +32,9 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_hub);
 
-        CustomListAdapter whatever = new CustomListAdapter(this, nameArray, infoArray, imageArray);
-        listView = (ListView) findViewById(R.id.listviewID);
-        listView.setAdapter(whatever);
+//        CustomListAdapter whatever = new CustomListAdapter(this, nameArray, infoArray, imageArray);
+//        listView = (ListView) findViewById(R.id.listviewID);
+//        listView.setAdapter(whatever);
 
         addButton=findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
@@ -48,11 +48,11 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
                 R.drawable.profile_icon,
                 R.drawable.profile_icon};
 
-//        list.add("Employee1");
-//        list.add("Employee2");
-//        list.add("Employee3");
-//        list.add("Employee4");
-//        list.add("Employee5");
+        list.add("Employee1");
+        list.add("Employee2");
+        list.add("Employee3");
+        list.add("Employee4");
+        list.add("Employee5");
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
