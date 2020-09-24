@@ -23,7 +23,6 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
     ListView listView;
     List list = new ArrayList();
     ArrayAdapter adapter;
-
     Button addButton;
 
 
@@ -39,20 +38,20 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         addButton=findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
 
-        listView =(ListView) findViewById(R.id.employee_list);
-        String[] nameArray = {"Jake", "Bake", "Norm", "Shell"};
-        String[] jobDesc = {"EPT", "TUTOR", "EPT", "TUTOR"};
-
-        Integer[] imageArray = {R.drawable.profile_icon,
-                R.drawable.profile_icon,
-                R.drawable.profile_icon,
-                R.drawable.profile_icon};
-
-        list.add("Employee1");
-        list.add("Employee2");
-        list.add("Employee3");
-        list.add("Employee4");
-        list.add("Employee5");
+//        listView =(ListView) findViewById(R.id.employee_list);
+//        String[] nameArray = {"Jake", "Bake", "Norm", "Shell"};
+//        String[] jobDesc = {"EPT", "TUTOR", "EPT", "TUTOR"};
+//
+//        Integer[] imageArray = {R.drawable.profile_icon,
+//                R.drawable.profile_icon,
+//                R.drawable.profile_icon,
+//                R.drawable.profile_icon};
+//
+//        list.add("Employee1");
+//        list.add("Employee2");
+//        list.add("Employee3");
+//        list.add("Employee4");
+//        list.add("Employee5");
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
