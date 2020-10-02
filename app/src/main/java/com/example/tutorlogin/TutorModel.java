@@ -4,7 +4,7 @@ public class TutorModel {
     private String name;
     private String role;
     private String subject;
-    private String days;
+//    private String days;
 
     // constructor
 
@@ -58,11 +58,11 @@ public class TutorModel {
         this.subject = subject;
     }
 
-    public String getDays() {
-        return days;
-    }
-
-    public void setDays(String days) {
-        this.days = days;
-    }
+//    public String getDays() {
+//        return days;
+//    }
+//
+//    public void setDays(String days) {
+//        this.days = days;
+//    }
 }

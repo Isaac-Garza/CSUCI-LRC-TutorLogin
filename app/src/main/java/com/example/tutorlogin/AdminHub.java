@@ -38,7 +38,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         addButton=findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
 
-//        listView =(ListView) findViewById(R.id.employee_list);
+        listView =(ListView) findViewById(R.id.employee_list);
 //        String[] nameArray = {"Jake", "Bake", "Norm", "Shell"};
 //        String[] jobDesc = {"EPT", "TUTOR", "EPT", "TUTOR"};
 //
