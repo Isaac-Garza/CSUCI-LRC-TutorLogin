@@ -9,11 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class AddTutor extends AppCompatActivity {
 
     EditText tutorName, tutorRole, tutorSubjects;
     Button addTutor;
 
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class AddTutor extends AppCompatActivity {
 
                 try {
                     tutorModel = new TutorModel(tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
-                    Toast.makeText(AddTutor.this, tutorModel.toString(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(AddTutor.this, tutorModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch(Exception e) {
                     Toast.makeText(AddTutor.this, "Error Adding Tutor", Toast.LENGTH_SHORT).show();
@@ -42,14 +47,19 @@ public class AddTutor extends AppCompatActivity {
 
                 }
 
-                DatabaseHelper databaseHelper = new DatabaseHelper(AddTutor.this);
-
-                boolean success = databaseHelper.addOne(tutorModel);
-
-                Toast.makeText(AddTutor.this, "Success!!" + success, Toast.LENGTH_SHORT).show();
+                addOne(tutorModel);
+                Toast.makeText(AddTutor.this, "Tutor Added!", Toast.LENGTH_SHORT).show();
 
             }
         });
+
+    }
+
+    private void addOne(TutorModel tutorModel) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("Tutor");
+
+        reference.child(tutorModel.getName()).setValue(tutorModel);
 
     }
 }

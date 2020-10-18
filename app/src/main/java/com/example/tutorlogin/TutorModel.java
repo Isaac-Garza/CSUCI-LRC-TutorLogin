@@ -65,4 +65,13 @@ public class TutorModel {
 //    public void setDays(String days) {
 //        this.days = days;
 //    }
+
+    public boolean addOne(TutorModel tutorModel) {
+
+
+
+        return true;
+
+
+    }
 }

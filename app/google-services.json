@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "307373598719",
+    "firebase_url": "https://citutor.firebaseio.com",
+    "project_id": "citutor",
+    "storage_bucket": "citutor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307373598719:android:d49f6cbc1cdec6704329ca",
+        "android_client_info": {
+          "package_name": "com.example.tutorlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307373598719-kpn9iogl5nekoo2qu6gtc0fj2jdrm428.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3g5QGCkAOy5PCeI4BU0cdZ_Og7xkTmqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307373598719-kpn9iogl5nekoo2qu6gtc0fj2jdrm428.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
