@@ -1,6 +1,7 @@
 package com.example.tutorlogin;
 
 public class TutorModel {
+    private String id;
     private String name;
     private String role;
     private String subject;
@@ -9,7 +10,8 @@ public class TutorModel {
     // constructor
 
 //    public TutorModel(String name, String role, String subject, String days) {
-    public TutorModel(String name, String role, String subject) {
+    public TutorModel(String id, String name, String role, String subject) {
+        this.id = id;
         this.name = name;
         this.role = role;
         this.subject = subject;
@@ -65,7 +67,7 @@ public class TutorModel {
 //    public void setDays(String days) {
 //        this.days = days;
 //    }
-
+ 
     public boolean addOne(TutorModel tutorModel) {
 
 
@@ -73,5 +75,13 @@ public class TutorModel {
         return true;
 
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -21,6 +21,27 @@
 
     <!--    Name of New Employee    -->
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/employee_id"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/tutor_id"
+            android:layout_width="265dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!--    Name of New Employee    -->
+    <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="horizontal">
@@ -34,12 +55,12 @@
       android:textSize="20sp"
       android:layout_gravity="start" />
 
-     <EditText
-         android:id="@+id/tutor_name"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_weight="1"
-         android:hint="@string/input_name" />
+        <EditText
+            android:id="@+id/tutor_name"
+            android:layout_width="303dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/input_name" />
     </LinearLayout>
 
     <!--    Role of New Employee    -->
@@ -57,12 +78,12 @@
            android:text="@string/employee_role"
            android:textSize="20sp" />
 
-      <EditText
-          android:id="@+id/tutor_role"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:hint="@string/input_role" />
+        <EditText
+            android:id="@+id/tutor_role"
+            android:layout_width="317dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/input_role" />
     </LinearLayout>
 
     <!--    Subject(s) of New Employee    -->
@@ -82,7 +103,7 @@
 
         <EditText
             android:id="@+id/tutor_subject"
-            android:layout_width="match_parent"
+            android:layout_width="266dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="@string/input_subjects" />

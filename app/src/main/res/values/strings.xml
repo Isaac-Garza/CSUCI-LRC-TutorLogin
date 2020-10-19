@@ -28,6 +28,7 @@
 
     <!--  Add Tutor Strings  -->
     <string name="add_page_title">Adding Employee</string>
+    <string name="employee_id">Dolphin ID: </string>
     <string name="employee_name">Name: </string>
     <string name="employee_role">Role:  </string>
     <string name="employee_subjects">Subject(s): </string>
