@@ -38,22 +38,20 @@ public class AddTutor extends AppCompatActivity {
                 // Check to see if empty string works
 
                 TutorModel tutorModel;
+                tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
 
-                try {
-                    tutorModel = new TutorModel(tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
-//                    Toast.makeText(AddTutor.this, tutorModel.toString(), Toast.LENGTH_SHORT).show();
+
+                boolean success;
+                success = addOne(tutorModel);
+
+                if(!success) {
+                    Toast.makeText(AddTutor.this, "Error in Fields", Toast.LENGTH_SHORT).show();
                 }
-                catch(Exception e) {
-                    Toast.makeText(AddTutor.this, "Error Adding Tutor", Toast.LENGTH_SHORT).show();
-                    tutorModel = new TutorModel("error", "error", "error");
-
+                else {
+                    Toast.makeText(AddTutor.this, "Tutor added " + success, Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(AddTutor.this, AdminHub.class);
+                    startActivity(i);
                 }
-
-                addOne(tutorModel);
-                Toast.makeText(AddTutor.this, "Tutor Added!", Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(AddTutor.this, AdminHub.class);
-                startActivity(i);
 
             }
         });
@@ -61,11 +59,16 @@ public class AddTutor extends AppCompatActivity {
 
     }
 
-    private void addOne(TutorModel tutorModel) {
-        rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("Tutor");
+    private boolean addOne(TutorModel tutorModel) {
 
-        reference.child(tutorModel.getName()).setValue(tutorModel);
+        boolean success = false;
+        if(!tutorModel.getName().isEmpty() || !tutorModel.getId().isEmpty() || !tutorModel.getRole().isEmpty() || !tutorModel.getSubject().isEmpty()) {
+            rootNode = FirebaseDatabase.getInstance();
+            reference = rootNode.getReference("Tutor");
+            reference.child(tutorModel.getId()).setValue(tutorModel);
+            success = true;
+        }
 
+        return success;
     }
 }

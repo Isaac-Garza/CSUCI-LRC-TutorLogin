@@ -1,16 +1,21 @@
 package com.example.tutorlogin;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class TutorModel {
     private String id;
     private String name;
     private String role;
     private String subject;
+    public FirebaseDatabase rootNode;
+    public DatabaseReference reference;
 //    private String days;
 
     // constructor
 
 //    public TutorModel(String name, String role, String subject, String days) {
-    public TutorModel(String id, String name, String role, String subject) {
+    public TutorModel(String id, String name, String role, String subject){
         this.id = id;
         this.name = name;
         this.role = role;
@@ -26,6 +31,7 @@ public class TutorModel {
     @Override
     public String toString() {
         return "TutorModel{" +
+                "ID='" + id + "'" +
                 "name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", subject='" + subject + '\'' +
@@ -67,15 +73,7 @@ public class TutorModel {
 //    public void setDays(String days) {
 //        this.days = days;
 //    }
- 
-    public boolean addOne(TutorModel tutorModel) {
 
-
-
-        return true;
-
-
-    }
 
     public String getId() {
         return id;

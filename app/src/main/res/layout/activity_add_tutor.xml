@@ -10,6 +10,7 @@
     android:weightSum="6"
     tools:context=".AddTutor">
 
+    <!--    New Employee    -->
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -19,7 +20,7 @@
           android:textSize="30sp"
           android:textColor="@android:color/black" />
 
-    <!--    Name of New Employee    -->
+    <!--    ID of New Employee    -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -59,8 +60,8 @@
             android:id="@+id/tutor_name"
             android:layout_width="303dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="@string/input_name" />
+            android:layout_weight="1"/>
+<!--            android:hint="@string/input_name" />-->
     </LinearLayout>
 
     <!--    Role of New Employee    -->
@@ -82,8 +83,8 @@
             android:id="@+id/tutor_role"
             android:layout_width="317dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="@string/input_role" />
+            android:layout_weight="1"/>
+<!--            android:hint="@string/input_role" />-->
     </LinearLayout>
 
     <!--    Subject(s) of New Employee    -->
@@ -105,8 +106,8 @@
             android:id="@+id/tutor_subject"
             android:layout_width="266dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="@string/input_subjects" />
+            android:layout_weight="1"/>
+<!--            android:hint="@string/input_subjects" />-->
     </LinearLayout>
 
     <!--    Days for New Employee    -->
