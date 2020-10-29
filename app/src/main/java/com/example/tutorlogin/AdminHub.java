@@ -11,11 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class AdminHub extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener{
@@ -31,27 +34,41 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_hub);
 
-//        CustomListAdapter whatever = new CustomListAdapter(this, nameArray, infoArray, imageArray);
-//        listView = (ListView) findViewById(R.id.listviewID);
-//        listView.setAdapter(whatever);
+
 
         addButton=findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
 
-        listView =(ListView) findViewById(R.id.employee_list);
-//        String[] nameArray = {"Jake", "Bake", "Norm", "Shell"};
-//        String[] jobDesc = {"EPT", "TUTOR", "EPT", "TUTOR"};
+        listView =findViewById(R.id.employee_list);
+
+//        HashMap<String, String> nameDolphinId = new HashMap<>();
+//        nameDolphinId.put("Isaac Garza", "002497222");
+//        nameDolphinId.put("George Florez", "002497333");
+//        nameDolphinId.put("Mika Bean","002497444");
 //
-//        Integer[] imageArray = {R.drawable.profile_icon,
-//                R.drawable.profile_icon,
-//                R.drawable.profile_icon,
-//                R.drawable.profile_icon};
+//        List<HashMap<String, String>> listItems = new ArrayList<>();
+//        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item,
+//                new String[]{"First Line", "Second Line"},
+//                new int[]{R.id.text1, R.id.text2});
 //
-//        list.add("Employee1");
-//        list.add("Employee2");
-//        list.add("Employee3");
-//        list.add("Employee4");
-//        list.add("Employee5");
+//        Iterator iterator = nameDolphinId.entrySet().iterator();
+//        while (iterator.hasNext())
+//        {
+//            HashMap<String, String> resultMap = new HashMap<>();
+//            Map.Entry pair = (Map.Entry) iterator.next();
+//            resultMap.put("First Line", pair.getKey().toString());
+//            resultMap.put("Second Line", pair.getKey().toString());
+//            listItems.add(resultMap);
+//        }
+
+
+
+
+        list.add("Employee1");
+        list.add("Employee2");
+        list.add("Employee3");
+        list.add("Employee4");
+        list.add("Employee5");
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,7 +80,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
             }
         });
 
-
+//        listView.setAdapter(adapter);
 
         adapter = new ArrayAdapter(AdminHub.this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);

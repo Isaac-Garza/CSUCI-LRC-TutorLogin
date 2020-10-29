@@ -62,7 +62,11 @@ public class AddTutor extends AppCompatActivity {
     private boolean addOne(TutorModel tutorModel) {
 
         boolean success = false;
-        if(!tutorModel.getName().isEmpty() || !tutorModel.getId().isEmpty() || !tutorModel.getRole().isEmpty() || !tutorModel.getSubject().isEmpty()) {
+        if(!tutorModel.getName().isEmpty() &&
+                !tutorModel.getId().isEmpty() &&
+                !tutorModel.getRole().isEmpty() &&
+                !tutorModel.getSubject().isEmpty()) {
+
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("Tutor");
             reference.child(tutorModel.getId()).setValue(tutorModel);
@@ -71,4 +75,6 @@ public class AddTutor extends AppCompatActivity {
 
         return success;
     }
+
+
 }

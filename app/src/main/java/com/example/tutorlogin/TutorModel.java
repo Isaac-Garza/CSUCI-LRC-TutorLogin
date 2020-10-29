@@ -24,6 +24,7 @@ public class TutorModel {
     }
 
     public TutorModel() {
+
     }
 
     //toString
