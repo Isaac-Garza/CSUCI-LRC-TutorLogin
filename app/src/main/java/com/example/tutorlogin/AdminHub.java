@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,9 +26,10 @@ import java.util.Map;
 public class AdminHub extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener{
 
     ListView listView;
-    List list = new ArrayList();
-    ArrayAdapter adapter;
+    ArrayList<TutorModel> list = new ArrayList<>();
+//    ArrayAdapter adapter;
     Button addButton;
+    HashMap<String, String> nameDolphinId = new HashMap<>();
 
 
     @Override
@@ -41,7 +44,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
 
         listView =findViewById(R.id.employee_list);
 
-//        HashMap<String, String> nameDolphinId = new HashMap<>();
+
 //        nameDolphinId.put("Isaac Garza", "002497222");
 //        nameDolphinId.put("George Florez", "002497333");
 //        nameDolphinId.put("Mika Bean","002497444");
@@ -61,29 +64,31 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
 //            listItems.add(resultMap);
 //        }
 
+        TutorModel isaac = new TutorModel("002497222", "Isaac Garza", "LEAD", "MATH");
+        TutorModel gearge = new TutorModel("002497333", "Gearge Flank", "PLTL", "COMP");
+        TutorModel moka = new TutorModel("002497444", "Moka Kazoo", "LRC", "PHYS");
 
+        list.add(isaac);
+        list.add(gearge);
+        list.add(moka);
 
-
-        list.add("Employee1");
-        list.add("Employee2");
-        list.add("Employee3");
-        list.add("Employee4");
-        list.add("Employee5");
-
+        TutorListAdapter adapter = new TutorListAdapter(this, R.layout.list_item, list);
+        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(AdminHub.this, EditTutor.class);
-                intent.putExtra("TutorName", list.get(position).toString());
+                intent.putExtra("TutorName", (Serializable) list.get(position));
+//                intent.putExtra("TutorName", (Parcelable) list.get(position));
                 startActivity(intent);
             }
         });
 
-//        listView.setAdapter(adapter);
 
-        adapter = new ArrayAdapter(AdminHub.this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
+
+//        adapter = new ArrayAdapter(AdminHub.this, android.R.layout.simple_list_item_1, list);
+//        listView.setAdapter(adapter);
 
     }
 
