@@ -1,9 +1,12 @@
 package com.example.tutorlogin;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class TutorModel {
+public class TutorModel implements Parcelable {
     private String id;
     private String name;
     private String role;
@@ -28,6 +31,25 @@ public class TutorModel {
     }
 
     //toString
+
+    protected TutorModel(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        role = in.readString();
+        subject = in.readString();
+    }
+
+    public static final Creator<TutorModel> CREATOR = new Creator<TutorModel>() {
+        @Override
+        public TutorModel createFromParcel(Parcel in) {
+            return new TutorModel(in);
+        }
+
+        @Override
+        public TutorModel[] newArray(int size) {
+            return new TutorModel[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -82,5 +104,18 @@ public class TutorModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(role);
+        dest.writeString(subject);
     }
 }

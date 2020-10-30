@@ -23,10 +23,10 @@ public class EditTutor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_tutor);
 
-        Intent intent = getIntent();
-        String selectedTutorTitle = intent.getStringExtra("TutorName");
+        TutorModel selectedTutor = getIntent().getParcelableExtra("Tutor");
+
         editTutorTitle = findViewById(R.id.selected_tutor);
-        editTutorTitle.setText(selectedTutorTitle);
+        editTutorTitle.setText(selectedTutor.getName());
 
 //        editTutor.setOnClickListener(new View.OnClickListener()
 //        {
