@@ -36,6 +36,7 @@
             android:layout_gravity="start" />
 
         <EditText
+            android:id="@+id/name_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -58,6 +59,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/role_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -80,6 +82,7 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/subject_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"

@@ -27,9 +27,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
 
     ListView listView;
     ArrayList<TutorModel> list = new ArrayList<>();
-//    ArrayAdapter adapter;
     Button addButton;
-    HashMap<String, String> nameDolphinId = new HashMap<>();
 
 
     @Override
@@ -57,18 +55,13 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(AdminHub.this, EditTutor.class);
                 intent.putExtra("Tutor", list.get(position));
-
                 startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override
     public void onClick(View view) {
-
         Intent i = new Intent(this, AddTutor.class);
         startActivity(i);
     }
