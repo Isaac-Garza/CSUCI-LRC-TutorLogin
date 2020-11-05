@@ -17,7 +17,7 @@ public class EditTutor extends AppCompatActivity {
 
     TextView editTutorTitle;
     EditText edId, edTutorName, edRole, edSubjects;
-    Button editTutor;
+    Button editTutor, removeTutor;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -43,6 +43,7 @@ public class EditTutor extends AppCompatActivity {
         edSubjects = findViewById(R.id.subject_field);
         edSubjects.setText(selectedTutor.getSubject());
 
+
         editTutor = findViewById(R.id.edit_button);
         // use intent that was passed here to find tutor being edited, then replace with new object
         editTutor.setOnClickListener(new View.OnClickListener()
@@ -66,8 +67,22 @@ public class EditTutor extends AppCompatActivity {
                     Intent i = new Intent(EditTutor.this, AdminHub.class);
                     startActivity(i);
                 }
+            }
+        });
 
+        removeTutor = findViewById(R.id.remove_button);
+        removeTutor.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("Tutor");
+
+                reference.child(edId.getText().toString()).removeValue();
+
+                Toast.makeText(EditTutor.this, "Tutor Removed!", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(EditTutor.this, AdminHub.class);
+                startActivity(i);
             }
         });
 
