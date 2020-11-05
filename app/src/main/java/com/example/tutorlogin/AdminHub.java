@@ -1,5 +1,7 @@
 package com.example.tutorlogin;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +16,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -27,8 +35,11 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
 
     ListView listView;
     ArrayList<TutorModel> list = new ArrayList<>();
+    TutorListAdapter adapter;
     Button addButton;
 
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +50,39 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
         addButton.setOnClickListener(this);
         listView =findViewById(R.id.employee_list);
 
-        TutorModel isaac = new TutorModel("002497222", "Isaac Garza", "LEAD", "MATH");
-        TutorModel gearge = new TutorModel("002497333", "Gearge Flank", "PLTL", "COMP");
-        TutorModel moka = new TutorModel("002497444", "Moka Kazoo", "LRC", "PHYS");
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("Tutor");
 
-        list.add(isaac);
-        list.add(gearge);
-        list.add(moka);
-
-        TutorListAdapter adapter = new TutorListAdapter(this, R.layout.list_item, list);
+        adapter = new TutorListAdapter(this, R.layout.list_item, list);
         listView.setAdapter(adapter);
+
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                list.add(snapshot.getValue(TutorModel.class));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
