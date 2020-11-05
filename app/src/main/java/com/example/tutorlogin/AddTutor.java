@@ -1,5 +1,7 @@
 package com.example.tutorlogin;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,8 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddTutor extends AppCompatActivity {
 
@@ -20,6 +26,8 @@ public class AddTutor extends AppCompatActivity {
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+
+    ValueEventListener responseListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +43,24 @@ public class AddTutor extends AppCompatActivity {
         addTutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Check to see if empty string works
-
                 TutorModel tutorModel;
                 tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
 
-
-                boolean success;
-                success = addOne(tutorModel);
+                boolean success = addOne(tutorModel);
 
                 if(!success) {
-                    Toast.makeText(AddTutor.this, "Error in Fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddTutor.this, "Empty Field(s) or Duplicate ID", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(AddTutor.this, "Tutor added " + success, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(AddTutor.this, AdminHub.class);
                     startActivity(i);
                 }
-
             }
         });
-
-
     }
 
     private boolean addOne(TutorModel tutorModel) {
-
         boolean success = false;
         if(!tutorModel.getName().isEmpty() &&
                 !tutorModel.getId().isEmpty() &&
@@ -69,12 +69,14 @@ public class AddTutor extends AppCompatActivity {
 
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("Tutor");
-            reference.child(tutorModel.getId()).setValue(tutorModel);
-            success = true;
+
+            String keyValue = reference.child(tutorModel.getId()).getKey();
+            if(!(keyValue !=null && keyValue.equals(tutorModel.getId()))) {
+                reference.child(tutorModel.getId()).setValue(tutorModel);
+                success = true;
+            }
         }
 
         return success;
     }
-
-
 }
