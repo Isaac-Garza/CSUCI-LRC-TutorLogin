@@ -3,17 +3,13 @@ package com.example.tutorlogin;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class TutorModel implements Parcelable {
     private String id;
     private String name;
     private String role;
     private String subject;
-    public FirebaseDatabase rootNode;
-    public DatabaseReference reference;
 //    private String days;
+
 
     // constructor
 
@@ -92,7 +88,7 @@ public class TutorModel implements Parcelable {
 //    public String getDays() {
 //        return days;
 //    }
-//
+
 //    public void setDays(String days) {
 //        this.days = days;
 //    }
@@ -117,5 +113,6 @@ public class TutorModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(role);
         dest.writeString(subject);
+//        dest.writeString(days);
     }
 }

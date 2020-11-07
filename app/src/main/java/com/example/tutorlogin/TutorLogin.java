@@ -9,12 +9,14 @@ import android.widget.Button;
 
 public class TutorLogin extends AppCompatActivity implements View.OnClickListener{
 
+    Button submitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_login);
 
-        Button submitButton = findViewById(R.id.login);
+        submitButton = findViewById(R.id.login);
 
         submitButton.setOnClickListener(this);
 
@@ -23,7 +25,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v)
     {
-        Intent i = new Intent(this,AdminHub.class);
+        Intent i = new Intent(this,TutorHub.class);
         startActivity(i);
     }
 }

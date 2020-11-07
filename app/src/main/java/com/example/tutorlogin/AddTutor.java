@@ -22,12 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 public class AddTutor extends AppCompatActivity {
 
     EditText tutorId, tutorName, tutorRole, tutorSubjects;
+
     Button addTutor;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-
-    ValueEventListener responseListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
