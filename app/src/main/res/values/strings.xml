@@ -100,6 +100,8 @@
         <item>11:30 PM</item>
     </string-array>
 
+    <string name="username">Username: </string>
+    <string name="password">Password: </string>
     <string name="submit_button">Add Tutor</string>
     <string name="cancel_button">Cancel</string>
 
