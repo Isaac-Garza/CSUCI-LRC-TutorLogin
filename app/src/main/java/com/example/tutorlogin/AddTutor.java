@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -51,71 +52,93 @@ public class AddTutor extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser() != null) {
-            Intent i = new Intent(AddTutor.this, AdminHub.class);
-            startActivity(i);
-            finish();
-        }
+//        if(firebaseAuth.getCurrentUser() != null) {
+//            Intent i = new Intent(AddTutor.this, AdminHub.class);
+//            startActivity(i);
+//            finish();
+//        }
 
         addTutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TutorModel tutorModel;
-                tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
 
-                boolean success = addOne(tutorModel);
+                String dolphinID = tutorId.getText().toString().trim();
+                String name = tutorName.getText().toString().trim();
+                String role = tutorRole.getText().toString().trim();
+                String subject = tutorSubjects.getText().toString().trim();
+                String userName = tutorUserName.getText().toString().trim();
+                String password = tutorPassword.getText().toString().trim();
 
-                if(!success) {
-                    Toast.makeText(AddTutor.this, "Empty Field(s) or Duplicate ID", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(dolphinID)) {
+                    tutorId.setError("ID is required!");
+                    return;
                 }
-                else {
-                    Toast.makeText(AddTutor.this, "Tutor added " + success, Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(AddTutor.this, AdminHub.class);
-                    startActivity(i);
+
+                if(TextUtils.isEmpty(name)) {
+                    tutorName.setError("Name is required!");
+                    return;
                 }
-            }
-        });
-    }
 
-    private boolean addOne(TutorModel tutorModel) {
-        boolean success = false;
-        String userName = tutorUserName.getText().toString().trim();
-        String password = tutorPassword.getText().toString().trim();
+                if(TextUtils.isEmpty(role)) {
+                    tutorRole.setError("Role(s) is required!");
+                    return;
+                }
 
-        if(!tutorModel.getName().isEmpty() &&
-                !tutorModel.getId().isEmpty() &&
-                !tutorModel.getRole().isEmpty() &&
-                !tutorModel.getSubject().isEmpty() &&
-                !TextUtils.isEmpty(userName) &&
-                !TextUtils.isEmpty(password)) {
+                if(TextUtils.isEmpty(subject)) {
+                    tutorSubjects.setError("Subject(s) is required!");
+                    return;
+                }
 
-            rootNode = FirebaseDatabase.getInstance();
-            reference = rootNode.getReference("Tutor");
+                if(TextUtils.isEmpty(userName)) {
+                    tutorUserName.setError("Email is required!");
+                    return;
+                }
 
-            String keyValue = reference.child(tutorModel.getId()).getKey();
+                if(TextUtils.isEmpty(password)) {
+                    tutorPassword.setError("Password is required!");
+                    return;
+                }
 
-            
-            if(!(keyValue !=null && keyValue.equals(tutorModel.getId()))) {
-                reference.child(tutorModel.getId()).setValue(tutorModel);
-                success = true;
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("Tutor").child(dolphinID);
 
-                // register the user in firebase
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()) {
+                            Toast.makeText(AddTutor.this, "Error: Duplicate Tutor ID", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 firebaseAuth.createUserWithEmailAndPassword(userName, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
+                            TutorModel tutorModel;
+                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
+
+                            reference.setValue(tutorModel);
+
                             Toast.makeText(AddTutor.this, "Tutor Created!", Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(AddTutor.this, AdminHub.class);
+                            startActivity(i);
+                            finish();
+
                         }
                         else {
                             Toast.makeText(AddTutor.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
             }
-        }
-
-        return success;
+        });
     }
 }

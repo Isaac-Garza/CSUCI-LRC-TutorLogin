@@ -98,6 +98,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
     public void onClick(View view) {
         Intent i = new Intent(this, AddTutor.class);
         startActivity(i);
+        finish();
     }
 
     @Override

@@ -66,6 +66,7 @@ public class EditTutor extends AppCompatActivity {
                     Toast.makeText(EditTutor.this, "Tutor Updated " + success, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(EditTutor.this, AdminHub.class);
                     startActivity(i);
+                    finish();
                 }
             }
         });
