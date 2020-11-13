@@ -37,7 +37,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         submitButton = findViewById(R.id.login);
         fAuth = FirebaseAuth.getInstance();
 
-        if(fAuth.getCurrentUser() != null) {
+       /* if(fAuth.getCurrentUser() != null) {
             Intent intent;
             if (fAuth.getUid().equals(adminID)) {
                 intent = new Intent(this, AdminHub.class);
@@ -48,7 +48,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
 
             startActivity(intent);
             finish();
-        }
+        }*/
 
         submitButton.setOnClickListener(this);
 

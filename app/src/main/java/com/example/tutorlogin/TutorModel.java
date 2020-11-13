@@ -8,20 +8,18 @@ public class TutorModel implements Parcelable {
     private String name;
     private String role;
     private String subject;
+    private String email;
     private boolean logged_in;
-//    private String days;
 
 
     // constructor
-
-//    public TutorModel(String name, String role, String subject, String days) {
-    public TutorModel(String id, String name, String role, String subject){
+    public TutorModel(String id, String name, String role, String subject, String email){
         this.id = id;
         this.name = name;
         this.role = role;
         this.subject = subject;
+        this.email = email;
         this.logged_in = false;
-//        this.days = days;
     }
 
     public TutorModel() {
@@ -35,6 +33,7 @@ public class TutorModel implements Parcelable {
         name = in.readString();
         role = in.readString();
         subject = in.readString();
+        email = in.readString();
     }
 
     public static final Creator<TutorModel> CREATOR = new Creator<TutorModel>() {
@@ -53,15 +52,22 @@ public class TutorModel implements Parcelable {
     public String toString() {
         return "TutorModel{" +
                 "ID='" + id + "'" +
-                "name='" + name + '\'' +
+                " name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", subject='" + subject + '\'' +
-//                ", days='" + days + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 
 
     // getters and setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -95,21 +101,8 @@ public class TutorModel implements Parcelable {
         this.logged_in = logged_in;
     }
 
-//    public String getDays() {
-//        return days;
-//    }
-
-//    public void setDays(String days) {
-//        this.days = days;
-//    }
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public String getEmail() {
+        return this.email;
     }
 
     @Override
@@ -123,6 +116,6 @@ public class TutorModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(role);
         dest.writeString(subject);
-//        dest.writeString(days);
+        dest.writeString(email);
     }
 }

@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EditTutor extends AppCompatActivity {
 
     TextView editTutorTitle;
-    EditText edId, edTutorName, edRole, edSubjects;
+    EditText edId, edTutorName, edRole, edSubjects, edEmail, edUserID;
     Button editTutor, removeTutor;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -53,7 +53,7 @@ public class EditTutor extends AppCompatActivity {
             public void onClick(View v) {
 
                 TutorModel tutorModel;
-                tutorModel = new TutorModel(edId.getText().toString(), edTutorName.getText().toString(), edRole.getText().toString(), edSubjects.getText().toString());
+                tutorModel = new TutorModel(edId.getText().toString(), edTutorName.getText().toString(), edRole.getText().toString(), edSubjects.getText().toString(), edEmail.getText().toString());
 
 
                 boolean success;

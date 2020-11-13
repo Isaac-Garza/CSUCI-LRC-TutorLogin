@@ -29,7 +29,7 @@ import org.w3c.dom.Text;
 
 public class AddTutor extends AppCompatActivity {
 
-    EditText tutorId, tutorName, tutorRole, tutorSubjects, tutorUserName, tutorPassword;
+    EditText tutorId, tutorName, tutorRole, tutorSubjects, tutorEmail, tutorPassword;
 
     Button addTutor;
 
@@ -47,7 +47,7 @@ public class AddTutor extends AppCompatActivity {
         tutorName = findViewById(R.id.tutor_name);
         tutorRole = findViewById(R.id.tutor_role);
         tutorSubjects = findViewById(R.id.tutor_subject);
-        tutorUserName = findViewById(R.id.username);
+        tutorEmail = findViewById(R.id.username);
         tutorPassword = findViewById(R.id.password);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -60,7 +60,7 @@ public class AddTutor extends AppCompatActivity {
                 String name = tutorName.getText().toString().trim();
                 String role = tutorRole.getText().toString().trim();
                 String subject = tutorSubjects.getText().toString().trim();
-                String userName = tutorUserName.getText().toString().trim();
+                String email = tutorEmail.getText().toString().trim();
                 String password = tutorPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(dolphinID)) {
@@ -83,8 +83,8 @@ public class AddTutor extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(userName)) {
-                    tutorUserName.setError("Email is required!");
+                if(TextUtils.isEmpty(email)) {
+                    tutorEmail.setError("Email is required!");
                     return;
                 }
 
@@ -100,8 +100,31 @@ public class AddTutor extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()) {
-                            Toast.makeText(AddTutor.this, "Error: Duplicate Tutor ID", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddTutor.this, "Error: Duplicate Dolphin ID", Toast.LENGTH_SHORT).show();
                             return;
+                        }
+                        else {
+                            firebaseAuth.createUserWithEmailAndPassword(tutorEmail.getText().toString(), tutorPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()) {
+                                        TutorModel tutorModel;
+                                        tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), tutorEmail.getText().toString());
+
+                                        reference.setValue(tutorModel);
+
+                                        Toast.makeText(AddTutor.this, "Tutor Created!", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(AddTutor.this, AdminHub.class);
+                                        startActivity(i);
+                                        finish();
+
+                                    }
+                                    else {
+                                        Toast.makeText(AddTutor.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         }
                     }
 
@@ -111,27 +134,7 @@ public class AddTutor extends AppCompatActivity {
                     }
                 });
 
-                firebaseAuth.createUserWithEmailAndPassword(userName, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            TutorModel tutorModel;
-                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString());
 
-                            reference.setValue(tutorModel);
-
-                            Toast.makeText(AddTutor.this, "Tutor Created!", Toast.LENGTH_SHORT).show();
-
-                            Intent i = new Intent(AddTutor.this, AdminHub.class);
-                            startActivity(i);
-                            finish();
-
-                        }
-                        else {
-                            Toast.makeText(AddTutor.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
             }
         });
     }
