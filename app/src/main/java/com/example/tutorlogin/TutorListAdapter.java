@@ -32,6 +32,7 @@ public class TutorListAdapter extends ArrayAdapter<TutorModel> {
         String id = getItem(position).getId();
         String role = getItem(position).getRole();
         String subject = getItem(position).getSubject();
+        Boolean loggedIn = getItem(position).getLoggedIn();
 
         TutorModel tutor = new TutorModel(id, name, role, subject);
 
@@ -43,7 +44,7 @@ public class TutorListAdapter extends ArrayAdapter<TutorModel> {
 
         mainTextView.setText(name);
 
-        if(role.equals("show")) {
+        if(loggedIn) {
             subTextView.setText(subject);
         }
         else {

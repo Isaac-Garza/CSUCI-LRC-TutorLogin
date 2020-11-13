@@ -8,6 +8,7 @@ public class TutorModel implements Parcelable {
     private String name;
     private String role;
     private String subject;
+    private boolean logged_in;
 //    private String days;
 
 
@@ -19,6 +20,7 @@ public class TutorModel implements Parcelable {
         this.name = name;
         this.role = role;
         this.subject = subject;
+        this.logged_in = false;
 //        this.days = days;
     }
 
@@ -83,6 +85,14 @@ public class TutorModel implements Parcelable {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public Boolean getLoggedIn() {
+        return this.logged_in;
+    }
+
+    public void setLogged_in(Boolean logged_in) {
+        this.logged_in = logged_in;
     }
 
 //    public String getDays() {

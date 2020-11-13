@@ -122,7 +122,7 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
                 // Modify What tutor gets in here
                 currentTutor = new TutorModel();
                 currentTutor = snapshot.getValue(TutorModel.class);
-                currentTutor.setRole("show");
+                currentTutor.setLogged_in(true);
                 tutorAvailableList.add(currentTutor);
                 tutorAdapter.notifyDataSetChanged();
             }
