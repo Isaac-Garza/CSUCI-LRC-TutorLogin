@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class TutorLogin extends AppCompatActivity implements View.OnClickListener{
 
+    final String adminID = "xB6UKHdlFTcef8Z47ILRBVOztEa2";
+
     TextView username, password;
     Button submitButton;
 
@@ -35,12 +37,18 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         submitButton = findViewById(R.id.login);
         fAuth = FirebaseAuth.getInstance();
 
-//        if(fAuth.getCurrentUser() != null) {
-//
-//            Intent i = new Intent(this, AdminHub.class);
-//            startActivity(i);
-//            finish();
-//        }
+        if(fAuth.getCurrentUser() != null) {
+            Intent intent;
+            if (fAuth.getUid().equals(adminID)) {
+                intent = new Intent(this, AdminHub.class);
+            }
+            else {
+                intent = new Intent(this, TutorHub.class);
+            }
+
+            startActivity(intent);
+            finish();
+        }
 
         submitButton.setOnClickListener(this);
 

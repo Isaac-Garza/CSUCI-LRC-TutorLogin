@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +24,7 @@ import java.util.Calendar;
 
 public class TutorHub extends AppCompatActivity implements View.OnClickListener{
 
-    Button lrcSchedule, stemSchedule;
+    Button lrcSchedule, stemSchedule, logoutButton;
 
     TextView tutorName;
 
@@ -34,7 +35,7 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
     TutorListAdapter tutorAdapter;
     TableListAdapter tableAdapter;
 
-    Calendar calendar;
+    FirebaseAuth firebaseAuth;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -50,6 +51,21 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
 
         lrcSchedule = findViewById(R.id.lrc_schedule_button);
         stemSchedule = findViewById(R.id.stem_schedule_button);
+        logoutButton = findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                Intent intentName = getIntent();
+                String identifier = intentName.getStringExtra("identifier");
+                reference = rootNode.getReference("Schedule").child(identifier);
+
+                Intent intent = new Intent(TutorHub.this, TutorLogin.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         tutorName = findViewById(R.id.tutorName);
         String identifier = intent.getStringExtra("identifier");
@@ -148,38 +164,6 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-    }
-
-    public String getCurrentDay() {
-        calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-        String currentDay = "error";
-
-        switch (day) {
-            case Calendar.SUNDAY:
-                currentDay = "SUN";
-                break;
-            case Calendar.MONDAY:
-                currentDay = "MON";
-                break;
-            case Calendar.TUESDAY:
-                currentDay = "TUE";
-                break;
-            case Calendar.WEDNESDAY:
-                currentDay = "WED";
-                break;
-            case Calendar.THURSDAY:
-                currentDay = "THURS";
-                break;
-            case Calendar.FRIDAY:
-                currentDay = "FRI";
-                break;
-            case Calendar.SATURDAY:
-                currentDay = "SAT";
-                break;
-        }
-
-        return currentDay;
     }
 
     @Override

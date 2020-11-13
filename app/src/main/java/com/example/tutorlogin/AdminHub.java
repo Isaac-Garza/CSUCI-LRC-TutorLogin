@@ -37,9 +37,10 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
     ListView listView;
     ArrayList<TutorModel> list = new ArrayList<>();
     TutorListAdapter adapter;
-    Button addButton;
+    Button addButton, logoutButton;
 
     FirebaseAuth firebaseAuth;
+
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -50,6 +51,19 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
 
         addButton=findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
+
+        logoutButton = findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+
+                Intent intent = new Intent(AdminHub.this, TutorLogin.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         listView =findViewById(R.id.employee_list);
 
         rootNode = FirebaseDatabase.getInstance();
@@ -92,6 +106,7 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
                 Intent intent = new Intent(AdminHub.this, EditTutor.class);
                 intent.putExtra("Tutor", list.get(position));
                 startActivity(intent);
+                finish();
             }
         });
     }

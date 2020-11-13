@@ -21,6 +21,8 @@
     <string name="admin_page">Admin Page</string>
     <string name="list">Current Tutor List:</string>
     <string name="add">Add Employee</string>
+    
+    <string name="log_out">Log Out</string>
 
     <!--  Tutor List Strings  -->
     <string name="tutor_temp">Tutor Temp</string>
