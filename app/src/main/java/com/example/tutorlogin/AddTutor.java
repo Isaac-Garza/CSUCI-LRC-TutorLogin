@@ -52,12 +52,6 @@ public class AddTutor extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-//        if(firebaseAuth.getCurrentUser() != null) {
-//            Intent i = new Intent(AddTutor.this, AdminHub.class);
-//            startActivity(i);
-//            finish();
-//        }
-
         addTutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

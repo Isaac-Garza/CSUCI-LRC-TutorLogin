@@ -38,11 +38,17 @@ public class TutorListAdapter extends ArrayAdapter<TutorModel> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        TextView tvName = convertView.findViewById(R.id.text1);
-        TextView tvId = convertView.findViewById(R.id.text2);
+        TextView mainTextView = convertView.findViewById(R.id.text1);
+        TextView subTextView = convertView.findViewById(R.id.text2);
 
-        tvName.setText(name);
-        tvId.setText(id);
+        mainTextView.setText(name);
+
+        if(role.equals("show")) {
+            subTextView.setText(subject);
+        }
+        else {
+            subTextView.setText(id);
+        }
 
         return convertView;
     }

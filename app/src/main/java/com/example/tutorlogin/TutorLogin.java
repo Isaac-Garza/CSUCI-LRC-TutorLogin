@@ -35,6 +35,13 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         submitButton = findViewById(R.id.login);
         fAuth = FirebaseAuth.getInstance();
 
+//        if(fAuth.getCurrentUser() != null) {
+//
+//            Intent i = new Intent(this, AdminHub.class);
+//            startActivity(i);
+//            finish();
+//        }
+
         submitButton.setOnClickListener(this);
 
     }
@@ -43,7 +50,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v)
     {
         final String recievedUsername = username.getText().toString().trim();
-        String recievedPassword = password.getText().toString().trim();
+        final String recievedPassword = password.getText().toString().trim();
 
         if(recievedUsername.equals("admin")) {
             Intent intent = new Intent(TutorLogin.this,AdminHub.class);
@@ -69,13 +76,13 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
                     Intent intent;
                     if(recievedUsername.equals("admin")) {
                         intent = new Intent(TutorLogin.this,AdminHub.class);
-                        startActivity(intent);
                     }
                     else {
                         intent = new Intent(TutorLogin.this,TutorHub.class);
+                        intent.putExtra("identifier", recievedPassword);
                     }
-
                     startActivity(intent);
+
                 } 
                 else {
                     Toast.makeText(TutorLogin.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
