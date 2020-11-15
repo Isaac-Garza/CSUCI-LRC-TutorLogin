@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -68,6 +69,11 @@ public class AddTutor extends AppCompatActivity {
                     return;
                 }
 
+                if(dolphinID.length() != 9) {
+                    tutorId.setError("Dolphin ID be 9 characters long");
+                    return;
+                }
+
                 if(TextUtils.isEmpty(name)) {
                     tutorName.setError("Name is required!");
                     return;
@@ -93,48 +99,30 @@ public class AddTutor extends AppCompatActivity {
                     return;
                 }
 
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Tutor").child(dolphinID);
-
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                firebaseAuth.createUserWithEmailAndPassword(tutorEmail.getText().toString(), tutorPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()) {
-                            Toast.makeText(AddTutor.this, "Error: Duplicate Dolphin ID", Toast.LENGTH_SHORT).show();
-                            return;
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            String createdUserID = task.getResult().getUser().getUid();
+                            TutorModel tutorModel;
+                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), createdUserID);
+
+                            rootNode = FirebaseDatabase.getInstance();
+                            reference = rootNode.getReference("Tutor").child(createdUserID);
+                            reference.setValue(tutorModel);
+
+                            Toast.makeText(AddTutor.this, "Tutor Created!", Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(AddTutor.this, AdminHub.class);
+                            startActivity(i);
+                            finish();
+
                         }
                         else {
-                            firebaseAuth.createUserWithEmailAndPassword(tutorEmail.getText().toString(), tutorPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()) {
-                                        TutorModel tutorModel;
-                                        tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), tutorEmail.getText().toString());
-
-                                        reference.setValue(tutorModel);
-
-                                        Toast.makeText(AddTutor.this, "Tutor Created!", Toast.LENGTH_SHORT).show();
-
-                                        Intent i = new Intent(AddTutor.this, AdminHub.class);
-                                        startActivity(i);
-                                        finish();
-
-                                    }
-                                    else {
-                                        Toast.makeText(AddTutor.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                            Toast.makeText(AddTutor.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
                 });
-
-
             }
         });
     }
