@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class TutorHub extends AppCompatActivity implements View.OnClickListener{
+public class TutorHub extends AppCompatActivity {
 
     Button lrcSchedule, stemSchedule, logoutButton;
     TextView tutorName;
@@ -129,13 +129,9 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 // Modify What tutor gets in here
-
                 currentTutor = new TutorModel();
                 currentTutor = snapshot.getValue(TutorModel.class);
                 currentTutor.setLogged_in(true);
-//
-//                loggedInReference = rootNode.getReference("Logged-In").child(currentTutor.getUserID());
-//                loggedInReference.setValue(currentTutor);
 
                 tutorAvailableList.add(currentTutor);
                 tutorAdapter.notifyDataSetChanged();
@@ -161,11 +157,6 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
 
             }
         });
-
-    }
-
-    @Override
-    public void onClick(View v) {
 
     }
 }
