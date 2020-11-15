@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TutorLogin extends AppCompatActivity implements View.OnClickListener{
 
@@ -25,6 +30,10 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     Button submitButton;
 
     FirebaseAuth fAuth;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+    DatabaseReference logReference;
+    DatabaseReference tutorReference;
 
 
     @Override
@@ -36,8 +45,10 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         password = findViewById(R.id.password);
         submitButton = findViewById(R.id.login);
         fAuth = FirebaseAuth.getInstance();
+        rootNode = FirebaseDatabase.getInstance();
 
-       /* if(fAuth.getCurrentUser() != null) {
+        if(fAuth.getCurrentUser() != null) {
+
             Intent intent;
             if (fAuth.getUid().equals(adminID)) {
                 intent = new Intent(this, AdminHub.class);
@@ -48,7 +59,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
 
             startActivity(intent);
             finish();
-        }*/
+        }
 
         submitButton.setOnClickListener(this);
 
@@ -84,13 +95,13 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
                     Intent intent;
                     if(recievedUsername.equals("admin")) {
                         intent = new Intent(TutorLogin.this,AdminHub.class);
+                        startActivity(intent);
                     }
                     else {
                         intent = new Intent(TutorLogin.this,TutorHub.class);
-                        intent.putExtra("identifier", recievedPassword);
                     }
                     startActivity(intent);
-
+                    finish();
                 } 
                 else {
                     Toast.makeText(TutorLogin.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -98,7 +109,6 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-
-
     }
+
 }
