@@ -20,12 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class TutorHub extends AppCompatActivity implements View.OnClickListener{
 
     Button lrcSchedule, stemSchedule, logoutButton;
-
     TextView tutorName;
 
     ListView studentList, tutorList;
@@ -46,8 +44,8 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_hub);
-        Intent intent = getIntent();
         rootNode = FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         lrcSchedule = findViewById(R.id.lrc_schedule_button);
         stemSchedule = findViewById(R.id.stem_schedule_button);
@@ -55,11 +53,11 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth = FirebaseAuth.getInstance();
+                String currentUser = firebaseAuth.getCurrentUser().getUid();
                 firebaseAuth.signOut();
-                Intent intentName = getIntent();
-                String identifier = intentName.getStringExtra("identifier");
-                reference = rootNode.getReference("Schedule").child(identifier);
+
+                reference = rootNode.getReference("Logged-In").child(currentUser);
+                reference.removeValue();
 
                 Intent intent = new Intent(TutorHub.this, TutorLogin.class);
                 startActivity(intent);
@@ -68,18 +66,15 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
         });
 
         tutorName = findViewById(R.id.tutorName);
-        String identifier = intent.getStringExtra("identifier");
+        String identifier = firebaseAuth.getCurrentUser().getUid();
         reference = rootNode.getReference("Tutor").child(identifier);
-
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                tutorName.setText(snapshot.getValue(TutorModel.class).getName());
-                currentTutor = new TutorModel();
-                currentTutor = snapshot.getValue(TutorModel.class);
-                loggedInReference = rootNode.getReference("Logged-In").child(currentTutor.getId());
-                loggedInReference.setValue(currentTutor);
-
+                TutorModel tutorModel = snapshot.getValue(TutorModel.class);
+                tutorName.setText(tutorModel.getName());
+                DatabaseReference newRef = rootNode.getReference("Logged-In").child(tutorModel.getUserID());
+                newRef.setValue(tutorModel);
             }
 
             @Override
@@ -88,14 +83,12 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-
-
         studentList = findViewById(R.id.student_queue_list);
         tutorList = findViewById(R.id.tutor_queue_list);
 
         rootNode = FirebaseDatabase.getInstance();
 
-        reference = rootNode.getReference("Logged-In");
+        loggedInReference = rootNode.getReference("Logged-In");
         studentReference = rootNode.getReference("Table");
 
         tutorAdapter = new TutorListAdapter(this, R.layout.list_item, tutorAvailableList);
@@ -132,13 +125,18 @@ public class TutorHub extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        reference.addChildEventListener(new ChildEventListener() {
+        loggedInReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 // Modify What tutor gets in here
+
                 currentTutor = new TutorModel();
                 currentTutor = snapshot.getValue(TutorModel.class);
                 currentTutor.setLogged_in(true);
+//
+//                loggedInReference = rootNode.getReference("Logged-In").child(currentTutor.getUserID());
+//                loggedInReference.setValue(currentTutor);
+
                 tutorAvailableList.add(currentTutor);
                 tutorAdapter.notifyDataSetChanged();
             }
