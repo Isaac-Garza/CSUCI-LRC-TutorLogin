@@ -8,17 +8,17 @@ public class TutorModel implements Parcelable {
     private String name;
     private String role;
     private String subject;
-    private String email;
+    private String userID;
     private boolean logged_in;
 
 
     // constructor
-    public TutorModel(String id, String name, String role, String subject, String email){
+    public TutorModel(String id, String name, String role, String subject, String userID){
         this.id = id;
         this.name = name;
         this.role = role;
         this.subject = subject;
-        this.email = email;
+        this.userID = userID;
         this.logged_in = false;
     }
 
@@ -33,7 +33,7 @@ public class TutorModel implements Parcelable {
         name = in.readString();
         role = in.readString();
         subject = in.readString();
-        email = in.readString();
+        userID = in.readString();
     }
 
     public static final Creator<TutorModel> CREATOR = new Creator<TutorModel>() {
@@ -55,7 +55,7 @@ public class TutorModel implements Parcelable {
                 " name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", subject='" + subject + '\'' +
-                ", email='" + email + '\'' +
+                ", userID='" + userID + '\'' +
                 '}';
     }
 
@@ -101,8 +101,8 @@ public class TutorModel implements Parcelable {
         this.logged_in = logged_in;
     }
 
-    public String getEmail() {
-        return this.email;
+    public String getUserID() {
+        return this.userID;
     }
 
     @Override
@@ -116,6 +116,6 @@ public class TutorModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(role);
         dest.writeString(subject);
-        dest.writeString(email);
+        dest.writeString(userID);
     }
 }

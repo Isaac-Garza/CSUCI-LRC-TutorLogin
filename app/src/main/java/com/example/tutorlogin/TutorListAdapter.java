@@ -32,10 +32,10 @@ public class TutorListAdapter extends ArrayAdapter<TutorModel> {
         String id = getItem(position).getId();
         String role = getItem(position).getRole();
         String subject = getItem(position).getSubject();
-        String email = getItem(position).getEmail();
+        String userID = getItem(position).getUserID();
         Boolean loggedIn = getItem(position).getLoggedIn();
 
-        TutorModel tutor = new TutorModel(id, name, role, subject, email);
+        TutorModel tutor = new TutorModel(id, name, role, subject, userID);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
