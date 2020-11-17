@@ -39,6 +39,9 @@
     <string name="input_name">FirstName LastName</string>
     <string name="input_role">STEM Tutor, LRC Tutor, Lead, etc.</string>
     <string name="input_subjects">MATH, COMP, etc.</string>
+    <string name="input_email">fName.lName123@csuci.edu</string>
+    <string name="input_password">DolphinID#</string>
+    <string name="input_file_name">Enter File Name</string>
     <string name="Monday">MON:</string>
     <string name="Tuesday">TUE:</string>
     <string name="Wednesday">WED:</string>
@@ -102,8 +105,9 @@
         <item>11:30 PM</item>
     </string-array>
 
-    <string name="username">Username: </string>
+    <string name="email">Email: </string>
     <string name="password">Password: </string>
+    <string name="image">Choose File</string>
     <string name="submit_button">Add Tutor</string>
     <string name="cancel_button">Cancel</string>
 

@@ -56,12 +56,12 @@
       android:textSize="20sp"
       android:layout_gravity="start" />
 
-        <EditText
+    <EditText
             android:id="@+id/tutor_name"
             android:layout_width="303dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
-<!--            android:hint="@string/input_name" />-->
+            android:layout_weight="1"
+            android:hint="@string/input_name" />
     </LinearLayout>
 
     <!--    Role of New Employee    -->
@@ -83,8 +83,8 @@
             android:id="@+id/tutor_role"
             android:layout_width="317dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
-<!--            android:hint="@string/input_role" />-->
+            android:layout_weight="1"
+            android:hint="@string/input_role" />
     </LinearLayout>
 
     <!--    Subject(s) of New Employee    -->
@@ -106,11 +106,11 @@
             android:id="@+id/tutor_subject"
             android:layout_width="266dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
-<!--            android:hint="@string/input_subjects" />-->
+            android:layout_weight="1"
+            android:hint="@string/input_subjects" />
     </LinearLayout>
 
-    <!--    Subject(s) of New Employee    -->
+    <!--    Email of New Employee    -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,17 +122,18 @@
             android:layout_gravity="start"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/username"
+            android:text="@string/email"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="266dp"
+            android:layout_width="307dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:hint="@string/input_email" />
     </LinearLayout>
 
-    <!--    Subject(s) of New Employee    -->
+    <!--    Password of New Employee    -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,12 +152,39 @@
             android:id="@+id/password"
             android:layout_width="268dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
-        <!--            android:hint="@string/input_subjects" />-->
+            android:layout_weight="1"
+            android:hint="@string/input_password" />
     </LinearLayout>
 
+    <!--    Image of New Employee    -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
 
+            android:layout_weight="1"
+            android:text="@string/image"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/image"
+            android:layout_width="241dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/input_file_name" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/profile_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile_icon" />
 
     <Button
         android:id="@+id/add_tutor_button"

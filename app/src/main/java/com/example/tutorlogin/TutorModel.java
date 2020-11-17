@@ -9,16 +9,20 @@ public class TutorModel implements Parcelable {
     private String role;
     private String subject;
     private String userID;
+    private String email;
+    private String password;
     private boolean logged_in;
 
 
     // constructor
-    public TutorModel(String id, String name, String role, String subject, String userID){
+    public TutorModel(String id, String name, String role, String subject, String userID, String email, String password){
         this.id = id;
         this.name = name;
         this.role = role;
         this.subject = subject;
         this.userID = userID;
+        this.email = email;
+        this.password = password;
         this.logged_in = false;
     }
 
@@ -34,6 +38,8 @@ public class TutorModel implements Parcelable {
         role = in.readString();
         subject = in.readString();
         userID = in.readString();
+        email = in.readString();
+        password = in.readString();
     }
 
     public static final Creator<TutorModel> CREATOR = new Creator<TutorModel>() {
@@ -56,6 +62,8 @@ public class TutorModel implements Parcelable {
                 ", role='" + role + '\'' +
                 ", subject='" + subject + '\'' +
                 ", userID='" + userID + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -105,6 +113,22 @@ public class TutorModel implements Parcelable {
         return this.userID;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -117,5 +141,7 @@ public class TutorModel implements Parcelable {
         dest.writeString(role);
         dest.writeString(subject);
         dest.writeString(userID);
+        dest.writeString(email);
+        dest.writeString(password);
     }
 }

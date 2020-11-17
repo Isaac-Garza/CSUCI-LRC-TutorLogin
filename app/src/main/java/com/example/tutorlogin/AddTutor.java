@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.renderscript.Sampler;
@@ -12,6 +14,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,18 +28,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
 public class AddTutor extends AppCompatActivity {
 
-    EditText tutorId, tutorName, tutorRole, tutorSubjects, tutorEmail, tutorPassword;
-
-    Button addTutor;
-
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    private EditText tutorId, tutorName, tutorRole, tutorSubjects, tutorEmail, tutorPassword;
+    private Button addTutor;
+    private Uri imageUri;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase rootNode;
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +65,16 @@ public class AddTutor extends AppCompatActivity {
                 String name = tutorName.getText().toString().trim();
                 String role = tutorRole.getText().toString().trim();
                 String subject = tutorSubjects.getText().toString().trim();
-                String email = tutorEmail.getText().toString().trim();
-                String password = tutorPassword.getText().toString().trim();
+                final String email = tutorEmail.getText().toString().trim();
+                final String password = tutorPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(dolphinID)) {
                     tutorId.setError("ID is required!");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(password)) {
+                    tutorPassword.setError("Password is required!");
                     return;
                 }
 
@@ -94,18 +103,14 @@ public class AddTutor extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)) {
-                    tutorPassword.setError("Password is required!");
-                    return;
-                }
-
                 firebaseAuth.createUserWithEmailAndPassword(tutorEmail.getText().toString(), tutorPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
+
                             String createdUserID = task.getResult().getUser().getUid();
                             TutorModel tutorModel;
-                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), createdUserID);
+                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), createdUserID, email, password);
 
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("Tutor").child(createdUserID);
@@ -124,6 +129,10 @@ public class AddTutor extends AppCompatActivity {
                     }
                 });
             }
+
+
+
+
         });
     }
 }
