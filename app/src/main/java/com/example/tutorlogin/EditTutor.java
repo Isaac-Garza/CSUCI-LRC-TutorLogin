@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +28,7 @@ public class EditTutor extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,6 @@ public class EditTutor extends AppCompatActivity {
                     return;
                 }
 
-
                 TutorModel tutorModel;
                 tutorModel = new TutorModel(dolphinID, name, role, subject, selectedTutor.getUserID(), email, password);
                 rootNode = FirebaseDatabase.getInstance();
@@ -117,6 +118,28 @@ public class EditTutor extends AppCompatActivity {
                 startActivity(i);
                 finish();
 
+//                firebaseAuth = FirebaseAuth.getInstance();
+//                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            TutorModel tutorModel;
+//                            tutorModel = new TutorModel(edId.getText().toString(), edTutorName.getText().toString(), edRole.getText().toString(), edSubjects.getText().toString(), task.getResult().getUser().getUid(), edEmail.getText().toString(), edPassword.getText().toString());
+//                            rootNode = FirebaseDatabase.getInstance();
+//                            reference = rootNode.getReference("Tutor");
+//                            reference.child(selectedTutor.getUserID()).setValue(tutorModel);
+//
+//                            Toast.makeText(EditTutor.this, "Tutor Updated!", Toast.LENGTH_SHORT).show();
+//                            Intent i = new Intent(EditTutor.this, AdminHub.class);
+//                            startActivity(i);
+//                            finish();
+//                        }
+//                        else {
+//                            Toast.makeText(EditTutor.this, "Error, Collision Accrued", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
             }
         });
 
@@ -134,10 +157,5 @@ public class EditTutor extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
     }
-
-
-
 }
