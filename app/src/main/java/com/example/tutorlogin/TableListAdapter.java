@@ -38,7 +38,7 @@ public class TableListAdapter extends ArrayAdapter<TableModel> {
         TextView tvTableNumber = convertView.findViewById(R.id.text1);
         TextView tvSubject = convertView.findViewById(R.id.text2);
 
-        tvTableNumber.setText("Table " + tableNumber);
+        tvTableNumber.setText(tableNumber);
         tvSubject.setText(subject);
 
         return convertView;
