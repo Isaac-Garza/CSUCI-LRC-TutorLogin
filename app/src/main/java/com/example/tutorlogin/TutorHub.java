@@ -138,12 +138,17 @@ public class TutorHub extends AppCompatActivity {
                 TableModel newTableModel = new TableModel();
                 newTableModel.setTableNumber(snapshot.getKey());
                 newTableModel.setSubject(snapshot.getValue().toString());
-                studentTableList.add(newTableModel);
-                alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                MediaPlayer mediaPlayer = MediaPlayer. create (getApplicationContext(), alarmSound);
-                mediaPlayer.start();
-                Toast.makeText(TutorHub.this, newTableModel.getTableNumber() + "  Needs Assistance", Toast.LENGTH_SHORT).show();
-                tableAdapter.notifyDataSetChanged();
+
+                if(tutorSubject.get(newTableModel.getSubject())) {
+                    studentTableList.add(newTableModel);
+                    alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    MediaPlayer mediaPlayer = MediaPlayer. create (getApplicationContext(), alarmSound);
+                    mediaPlayer.start();
+                    Toast.makeText(TutorHub.this, newTableModel.getTableNumber() + "  Needs Assistance", Toast.LENGTH_SHORT).show();
+                    tableAdapter.notifyDataSetChanged();
+                }
+
+
             }
 
             @Override
