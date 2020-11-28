@@ -105,6 +105,7 @@ public class TutorHub extends AppCompatActivity {
                 DatabaseReference newRef = rootNode.getReference("Logged-In").child(tutorModel.getUserID());
                 newRef.setValue(tutorModel);
 
+
                 String[] separatedSubjects = tutorModel.getSubject().split(", ");
                 for (String tutorSubjects : separatedSubjects) {
                     tutorSubject.put(tutorSubjects, true);
@@ -175,13 +176,14 @@ public class TutorHub extends AppCompatActivity {
         loggedInReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // Modify What tutor gets in here
                 currentTutor = new TutorModel();
                 currentTutor = snapshot.getValue(TutorModel.class);
-                currentTutor.setLogged_in(true);
 
-                tutorAvailableList.add(currentTutor);
-                tutorAdapter.notifyDataSetChanged();
+                if(!firebaseAuth.getUid().equals(currentTutor.getUserID())) {
+                    currentTutor.setLogged_in(true);
+                    tutorAvailableList.add(currentTutor);
+                    tutorAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
