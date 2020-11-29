@@ -231,4 +231,8 @@ public class TutorHub extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
