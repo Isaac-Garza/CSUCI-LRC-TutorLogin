@@ -6,7 +6,6 @@ import android.os.Parcelable;
 public class TutorModel implements Parcelable {
     private String id;
     private String name;
-    private String role;
     private String subject;
     private String userID;
     private String email;
@@ -15,10 +14,9 @@ public class TutorModel implements Parcelable {
 
 
     // constructor
-    public TutorModel(String id, String name, String role, String subject, String userID, String email, String password){
+    public TutorModel(String id, String name, String subject, String userID, String email, String password){
         this.id = id;
         this.name = name;
-        this.role = role;
         this.subject = subject;
         this.userID = userID;
         this.email = email;
@@ -35,7 +33,6 @@ public class TutorModel implements Parcelable {
     protected TutorModel(Parcel in) {
         id = in.readString();
         name = in.readString();
-        role = in.readString();
         subject = in.readString();
         userID = in.readString();
         email = in.readString();
@@ -59,7 +56,6 @@ public class TutorModel implements Parcelable {
         return "TutorModel{" +
                 "ID='" + id + "'" +
                 " name='" + name + '\'' +
-                ", role='" + role + '\'' +
                 ", subject='" + subject + '\'' +
                 ", userID='" + userID + '\'' +
                 ", email='" + email + '\'' +
@@ -83,14 +79,6 @@ public class TutorModel implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getSubject() {
@@ -138,7 +126,6 @@ public class TutorModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(name);
-        dest.writeString(role);
         dest.writeString(subject);
         dest.writeString(userID);
         dest.writeString(email);

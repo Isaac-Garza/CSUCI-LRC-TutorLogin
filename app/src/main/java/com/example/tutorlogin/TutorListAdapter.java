@@ -30,7 +30,6 @@ public class TutorListAdapter extends ArrayAdapter<TutorModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String name = getItem(position).getName();
         String id = getItem(position).getId();
-        String role = getItem(position).getRole();
         String subject = getItem(position).getSubject();
         String userID = getItem(position).getUserID();
         Boolean loggedIn = getItem(position).getLoggedIn();

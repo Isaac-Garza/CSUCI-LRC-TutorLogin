@@ -35,7 +35,7 @@ import org.w3c.dom.Text;
 
 public class AddTutor extends AppCompatActivity {
 
-    private EditText tutorId, tutorName, tutorRole, tutorSubjects, tutorEmail, tutorPassword;
+    private EditText tutorId, tutorName, tutorSubjects, tutorEmail, tutorPassword;
     private Button addTutor;
     private Uri imageUri;
     private FirebaseAuth firebaseAuth;
@@ -50,7 +50,6 @@ public class AddTutor extends AppCompatActivity {
         addTutor = findViewById(R.id.add_tutor_button);
         tutorId = findViewById(R.id.tutor_id);
         tutorName = findViewById(R.id.tutor_name);
-        tutorRole = findViewById(R.id.tutor_role);
         tutorSubjects = findViewById(R.id.tutor_subject);
         tutorEmail = findViewById(R.id.username);
         tutorPassword = findViewById(R.id.password);
@@ -63,7 +62,6 @@ public class AddTutor extends AppCompatActivity {
 
                 String dolphinID = tutorId.getText().toString().trim();
                 String name = tutorName.getText().toString().trim();
-                String role = tutorRole.getText().toString().trim();
                 String subject = tutorSubjects.getText().toString().trim();
                 final String email = tutorEmail.getText().toString().trim();
                 final String password = tutorPassword.getText().toString().trim();
@@ -88,11 +86,6 @@ public class AddTutor extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(role)) {
-                    tutorRole.setError("Role(s) is required!");
-                    return;
-                }
-
                 if(TextUtils.isEmpty(subject)) {
                     tutorSubjects.setError("Subject(s) is required!");
                     return;
@@ -110,7 +103,7 @@ public class AddTutor extends AppCompatActivity {
 
                             String createdUserID = task.getResult().getUser().getUid();
                             TutorModel tutorModel;
-                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorRole.getText().toString(), tutorSubjects.getText().toString(), createdUserID, email, password);
+                            tutorModel = new TutorModel(tutorId.getText().toString(), tutorName.getText().toString(), tutorSubjects.getText().toString(), createdUserID, email, password);
 
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("Tutor").child(createdUserID);

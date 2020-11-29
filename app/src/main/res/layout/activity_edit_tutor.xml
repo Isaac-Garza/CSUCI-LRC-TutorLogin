@@ -64,28 +64,6 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <!--    Role of New Employee    -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="@string/employee_role"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/role_field"
-            android:layout_width="317dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
-
     <!--    Subject(s) of New Employee    -->
     <LinearLayout
         android:layout_width="wrap_content"

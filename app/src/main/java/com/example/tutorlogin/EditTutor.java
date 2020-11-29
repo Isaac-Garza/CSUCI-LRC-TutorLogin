@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EditTutor extends AppCompatActivity {
 
     TextView editTutorTitle;
-    EditText edUserId, edId, edTutorName, edRole, edSubjects, edEmail, edPassword;
+    EditText edUserId, edId, edTutorName, edSubjects, edEmail, edPassword;
     Button editTutor, removeTutor;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -46,9 +46,6 @@ public class EditTutor extends AppCompatActivity {
         edTutorName = findViewById(R.id.name_field);
         edTutorName.setText(selectedTutor.getName());
 
-        edRole = findViewById(R.id.role_field);
-        edRole.setText(selectedTutor.getRole());
-
         edSubjects = findViewById(R.id.subject_field);
         edSubjects.setText(selectedTutor.getSubject());
 
@@ -59,7 +56,6 @@ public class EditTutor extends AppCompatActivity {
         edPassword.setText(selectedTutor.getPassword());
 
         editTutor = findViewById(R.id.edit_button);
-        // use intent that was passed here to find tutor being edited, then replace with new object
         editTutor.setOnClickListener(new View.OnClickListener()
         {
 
@@ -67,7 +63,6 @@ public class EditTutor extends AppCompatActivity {
             public void onClick(View v) {
                 String dolphinID = edId.getText().toString().trim();
                 String name = edTutorName.getText().toString().trim();
-                String role = edRole.getText().toString().trim();
                 String subject = edSubjects.getText().toString().trim();
                 String email = edEmail.getText().toString().trim();
                 String password = edPassword.getText().toString().trim();
@@ -87,11 +82,6 @@ public class EditTutor extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(role)) {
-                    edRole.setError("Role(s) is required!");
-                    return;
-                }
-
                 if(TextUtils.isEmpty(subject)) {
                     edSubjects.setError("Subject(s) is required!");
                     return;
@@ -108,7 +98,7 @@ public class EditTutor extends AppCompatActivity {
                 }
 
                 TutorModel tutorModel;
-                tutorModel = new TutorModel(dolphinID, name, role, subject, selectedTutor.getUserID(), email, password);
+                tutorModel = new TutorModel(dolphinID, name, subject, selectedTutor.getUserID(), email, password);
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("Tutor");
                 reference.child(selectedTutor.getUserID()).setValue(tutorModel);
@@ -117,29 +107,6 @@ public class EditTutor extends AppCompatActivity {
                 Intent i = new Intent(EditTutor.this, AdminHub.class);
                 startActivity(i);
                 finish();
-
-//                firebaseAuth = FirebaseAuth.getInstance();
-//                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            TutorModel tutorModel;
-//                            tutorModel = new TutorModel(edId.getText().toString(), edTutorName.getText().toString(), edRole.getText().toString(), edSubjects.getText().toString(), task.getResult().getUser().getUid(), edEmail.getText().toString(), edPassword.getText().toString());
-//                            rootNode = FirebaseDatabase.getInstance();
-//                            reference = rootNode.getReference("Tutor");
-//                            reference.child(selectedTutor.getUserID()).setValue(tutorModel);
-//
-//                            Toast.makeText(EditTutor.this, "Tutor Updated!", Toast.LENGTH_SHORT).show();
-//                            Intent i = new Intent(EditTutor.this, AdminHub.class);
-//                            startActivity(i);
-//                            finish();
-//                        }
-//                        else {
-//                            Toast.makeText(EditTutor.this, "Error, Collision Accrued", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
             }
         });
 
