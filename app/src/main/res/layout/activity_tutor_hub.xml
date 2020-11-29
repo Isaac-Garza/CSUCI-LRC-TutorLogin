@@ -45,6 +45,7 @@
     </ListView>
 
     <TextView
+        android:paddingTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -75,11 +76,11 @@
         </Button>
 
         <Button
-            android:id="@+id/stem_schedule_button"
+            android:id="@+id/course_by_tutor_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/stem_schedule">
+            android:text="@string/course_by_tutor">
 
         </Button>
 

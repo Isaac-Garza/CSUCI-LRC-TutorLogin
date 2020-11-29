@@ -15,7 +15,7 @@
     <string name="student_list">"Student Queue"</string>
     <string name="tutor_list">"Tutors Logged-In"</string>
     <string name="lrc_schedule">"LRC Schedule"</string>
-    <string name="stem_schedule">"STEM Schedule"</string>
+    <string name="course_by_tutor">"Course By Tutor"</string>
 
     <!--  Admin Page Strings  -->
     <string name="admin_page">Admin Page</string>

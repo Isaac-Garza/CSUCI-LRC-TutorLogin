@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class TutorHub extends AppCompatActivity {
 
-    Button lrcSchedule, stemSchedule, logoutButton;
+    Button logoutButton, scheduleButton, courseByTutorButton;
     TextView tutorName;
 
     ListView studentList, tutorList;
@@ -76,8 +76,31 @@ public class TutorHub extends AppCompatActivity {
 //        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        lrcSchedule = findViewById(R.id.lrc_schedule_button);
-        stemSchedule = findViewById(R.id.stem_schedule_button);
+        scheduleButton = findViewById(R.id.lrc_schedule_button);
+        scheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://docs.google.com/spreadsheets/d/1JRq3Gza7bNDe88ue_-m44NhMtGP_tyS6ZB8-jfb43wU/"));
+                startActivity(intent);
+            }
+        });
+
+        courseByTutorButton = findViewById(R.id.course_by_tutor_button);
+        courseByTutorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.csuci.edu/learningresourcecenter/coursesavailablefortutoringfall20.pdf"));
+                startActivity(intent);
+            }
+        });
+
+
         logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
