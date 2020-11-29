@@ -122,4 +122,10 @@ public class AdminHub extends AppCompatActivity implements View.OnClickListener,
     public boolean onTouch(View v, MotionEvent event) {
         return false;
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
+

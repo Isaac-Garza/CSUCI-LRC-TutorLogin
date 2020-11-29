@@ -128,4 +128,11 @@ public class AddTutor extends AppCompatActivity {
 
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, AdminHub.class);
+        startActivity(intent);
+        finish();
+    }
 }

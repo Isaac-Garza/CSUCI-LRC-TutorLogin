@@ -110,5 +110,9 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         });
 
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 
 }
