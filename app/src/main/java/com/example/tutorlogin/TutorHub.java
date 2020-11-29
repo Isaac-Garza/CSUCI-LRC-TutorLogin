@@ -44,7 +44,6 @@ public class TutorHub extends AppCompatActivity {
     TutorListAdapter tutorAdapter;
     TableListAdapter tableAdapter;
 
-    NotificationManager notificationManager;
     Uri alarmSound;
 
     FirebaseAuth firebaseAuth;

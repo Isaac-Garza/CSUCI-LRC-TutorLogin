@@ -27,7 +27,6 @@ public class AddTutor extends AppCompatActivity {
 
     private EditText tutorId, tutorName, tutorSubjects, tutorEmail, tutorPassword;
     private Button addTutor;
-    private Uri imageUri;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;

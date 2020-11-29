@@ -23,12 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class EditTutor extends AppCompatActivity {
 
     TextView editTutorTitle;
-    EditText edUserId, edId, edTutorName, edSubjects, edEmail, edPassword;
+    EditText edId, edTutorName, edSubjects, edEmail, edPassword;
     Button editTutor, removeTutor;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

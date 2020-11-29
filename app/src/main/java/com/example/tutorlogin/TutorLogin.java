@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class TutorLogin extends AppCompatActivity implements View.OnClickListener{
-
-    final String adminID = "xB6UKHdlFTcef8Z47ILRBVOztEa2";
-
     TextView username, password;
     Button submitButton;
 
@@ -34,34 +34,20 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
 
     FirebaseAuth fAuth;
     FirebaseDatabase rootNode;
+    Spinner tableSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_login);
-
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         submitButton = findViewById(R.id.login);
+        tableSpinner = findViewById(R.id.user_type);
         fAuth = FirebaseAuth.getInstance();
         rootNode = FirebaseDatabase.getInstance();
 
-        if(fAuth.getCurrentUser() != null) {
-
-            Intent intent;
-            if (fAuth.getUid().equals(adminID)) {
-                intent = new Intent(this, AdminHub.class);
-            }
-            else {
-                intent = new Intent(this, TutorHub.class);
-            }
-
-            startActivity(intent);
-            finish();
-        }
-
         submitButton.setOnClickListener(this);
-
     }
 
     @Override
@@ -69,12 +55,6 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     {
         final String recievedUsername = username.getText().toString().trim();
         final String recievedPassword = password.getText().toString().trim();
-
-        if(recievedUsername.equals("admin")) {
-            Intent intent = new Intent(TutorLogin.this,AdminHub.class);
-            startActivity(intent);
-            finish();
-        }
 
         if(TextUtils.isEmpty(recievedUsername)) {
             Toast.makeText(this, "Username is Required.", Toast.LENGTH_SHORT).show();
@@ -97,7 +77,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
 
                     Toast.makeText(TutorLogin.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent;
-                    if(recievedUsername.equals("admin")) {
+                    if(recievedUsername.equals("admin@csuci.edu")) {
                         intent = new Intent(TutorLogin.this,AdminHub.class);
                         startActivity(intent);
                     }
@@ -118,5 +98,13 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     public void onBackPressed() {
         progressDialog.dismiss();
     }
+
+    public void progressBar() {
+        progressDialog = new ProgressDialog(TutorLogin.this);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
 
 }
