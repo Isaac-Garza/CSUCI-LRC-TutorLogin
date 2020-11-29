@@ -3,6 +3,7 @@ package com.example.tutorlogin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,12 +30,10 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     TextView username, password;
     Button submitButton;
 
+    ProgressDialog progressDialog;
+
     FirebaseAuth fAuth;
     FirebaseDatabase rootNode;
-    DatabaseReference reference;
-    DatabaseReference logReference;
-    DatabaseReference tutorReference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +90,11 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+                    progressDialog = new ProgressDialog(TutorLogin.this);
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.progress_dialog);
+                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
                     Toast.makeText(TutorLogin.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent;
                     if(recievedUsername.equals("admin")) {
@@ -112,7 +116,7 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
     }
     @Override
     public void onBackPressed() {
-
+        progressDialog.dismiss();
     }
 
 }
