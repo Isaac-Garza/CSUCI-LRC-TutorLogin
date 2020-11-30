@@ -95,6 +95,32 @@ public class EditTutor extends AppCompatActivity {
                     return;
                 }
 
+                String[] lrcSubjects = {"MATH","CHEM","BUS","ECON","BIO","PHY","PHYCH","SOCI","HEALTH SCI","COMP","NURSING"};
+                String[] allSubjects = subject.split(", ");
+
+                boolean found = false;
+                for(int allSubjectIndex = 0; allSubjectIndex < allSubjects.length; allSubjectIndex++) {
+                    for (int indexLRC = 0; indexLRC < lrcSubjects.length && !found; indexLRC++) {
+                        if(allSubjects[allSubjectIndex].equals(lrcSubjects[indexLRC])) {
+                            found = true;
+                        }
+                    }
+                    if(!found) {
+                        String error = "ERROR: ";
+                        if(!allSubjects[allSubjectIndex].contains(",")) {
+                            edSubjects.setError(error + "Separate Subjects by Commas or Check Spacing");
+                        }
+                        else if (allSubjects[allSubjectIndex].substring(allSubjects[allSubjectIndex].length()-1).equals(",")) {
+                            edSubjects.setError(error + "Remove Comma at End");
+                        }
+                        else {
+                            edSubjects.setError("Subject(s) Misspelled: " + allSubjects[allSubjectIndex]);
+                        }
+                        return;
+                    }
+                    found = false;
+                }
+
                 TutorModel tutorModel;
                 tutorModel = new TutorModel(dolphinID, name, subject, selectedTutor.getUserID(), email, password);
                 rootNode = FirebaseDatabase.getInstance();

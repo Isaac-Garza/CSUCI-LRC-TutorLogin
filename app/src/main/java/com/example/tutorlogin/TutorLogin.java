@@ -34,7 +34,6 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
 
     FirebaseAuth fAuth;
     FirebaseDatabase rootNode;
-    Spinner tableSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,6 @@ public class TutorLogin extends AppCompatActivity implements View.OnClickListene
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         submitButton = findViewById(R.id.login);
-        tableSpinner = findViewById(R.id.user_type);
         fAuth = FirebaseAuth.getInstance();
         rootNode = FirebaseDatabase.getInstance();
 

@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class AddTutor extends AppCompatActivity {
 
@@ -54,6 +57,32 @@ public class AddTutor extends AppCompatActivity {
                 String subject = tutorSubjects.getText().toString().trim();
                 final String email = tutorEmail.getText().toString().trim();
                 final String password = tutorPassword.getText().toString().trim();
+
+                String[] lrcSubjects = {"MATH","CHEM","BUS","ECON","BIO","PHY","PHYCH","SOCI","HEALTH SCI","COMP","NURSING"};
+                String[] allSubjects = subject.split(", ");
+
+                boolean found = false;
+                for(int allSubjectIndex = 0; allSubjectIndex < allSubjects.length; allSubjectIndex++) {
+                    for (int indexLRC = 0; indexLRC < lrcSubjects.length && !found; indexLRC++) {
+                        if(allSubjects[allSubjectIndex].equals(lrcSubjects[indexLRC])) {
+                            found = true;
+                        }
+                    }
+                    if(!found) {
+                        String error = "ERROR: ";
+                        if(!allSubjects[allSubjectIndex].contains(",")) {
+                            tutorSubjects.setError(error + "Separate Subjects by Commas or Check Spacing");
+                        }
+                        else if (allSubjects[allSubjectIndex].substring(allSubjects[allSubjectIndex].length()-1).equals(",")) {
+                            tutorSubjects.setError(error + "Remove Comma at End");
+                        }
+                        else {
+                            tutorSubjects.setError("Subject(s) Misspelled: " + allSubjects[allSubjectIndex]);
+                        }
+                        return;
+                    }
+                    found = false;
+                }
 
                 if(TextUtils.isEmpty(dolphinID)) {
                     tutorId.setError("ID is required!");
