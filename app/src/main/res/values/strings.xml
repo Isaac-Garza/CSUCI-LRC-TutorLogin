@@ -116,7 +116,30 @@
     <string name="delete">Remove Tutor</string>
     <string name="edit">Edit Tutor</string>
 
-
+    <!--  Subject Legend  -->
+    <string name="subject_legend">Subject Legend:</string>
+    <string name="math">MATH: </string>
+    <string name="mathematics">\tMathematics </string>
+    <string name="chem">CHEM: </string>
+    <string name="chemistry">\tChemistry </string>
+    <string name="bus">BUS: </string>
+    <string name="business">\tBusiness </string>
+    <string name="econ">ECON: </string>
+    <string name="economics">\tEconomics </string>
+    <string name="bio">BIO: </string>
+    <string name="biology">\tBiology </string>
+    <string name="phys">PHYS: </string>
+    <string name="physics">\tPhysics </string>
+    <string name="psych">PSYCH: </string>
+    <string name="psychology">\tPsychology </string>
+    <string name="soci">SOCI: </string>
+    <string name="sociology">\tSociology </string>
+    <string name="heatlh_sci">HEATLH SCI: </string>
+    <string name="health_science">\tHealth Science </string>
+    <string name="comp">COMP: </string>
+    <string name="computer_science">\tComputer Science </string>
+    <string name="nursing_nursing">NURSING: </string>
+    <string name="nursing">\tNursing</string>
 
 
 </resources>
