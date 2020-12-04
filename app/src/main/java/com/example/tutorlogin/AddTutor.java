@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public class AddTutor extends AppCompatActivity {
 
     private EditText tutorId, tutorName, tutorSubjects, tutorEmail, tutorPassword;
-    private Button addTutor;
+    private Button addTutor, cancelbutton;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
@@ -40,6 +40,7 @@ public class AddTutor extends AppCompatActivity {
         setContentView(R.layout.activity_add_tutor);
 
         addTutor = findViewById(R.id.add_tutor_button);
+        cancelbutton = findViewById(R.id.cancel_button);
         tutorId = findViewById(R.id.tutor_id);
         tutorName = findViewById(R.id.tutor_name);
         tutorSubjects = findViewById(R.id.tutor_subject);
@@ -47,6 +48,15 @@ public class AddTutor extends AppCompatActivity {
         tutorPassword = findViewById(R.id.password);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+        cancelbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTutor.this, AdminHub.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         addTutor.setOnClickListener(new View.OnClickListener() {
             @Override
